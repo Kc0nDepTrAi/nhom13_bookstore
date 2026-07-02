@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 // Thanh vien 2: Chinh sua giao dien views
+>>>>>>> ffa11817ea7a2017892626d2af89a75d153c614b
 <?php $pageTitle = 'Admin - Thể loại'; ?>
 <!DOCTYPE html>
 <html lang="vi">
