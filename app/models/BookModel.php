@@ -1,3 +1,4 @@
+// Thanh vien 2: Xu ly du lieu models
 <?php
 namespace App\Models;
 
