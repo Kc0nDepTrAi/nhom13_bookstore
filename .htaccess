@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /bookstore/
+
+# ── Không rewrite các file/thư mục thực có trên ổ đĩa ──
+# (images, CSS, JS, PHP files cũ vẫn dùng trực tiếp nếu cần)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ── API: tất cả /api/* → api/index.php ──
+RewriteRule ^api(/.*)?$ api/index.php [QSA,L]
+
+# ── Web: tất cả request còn lại → index.php ──
+RewriteRule ^(.*)$ index.php [QSA,L]
