@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>API Test — Bookstore</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+        h1 { color: #569cd6; margin-bottom: 20px; font-size: 1.4rem; }
+        h2 { color: #9cdcfe; margin: 20px 0 10px; font-size: 1rem; border-bottom: 1px solid #444; padding-bottom: 6px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+        .card { background: #252526; border: 1px solid #3c3c3c; border-radius: 6px; padding: 14px; }
+        .card label { display: block; color: #ce9178; font-size: 0.78rem; margin-bottom: 4px; }
+        .card input, .card textarea {
+            width: 100%; background: #1e1e1e; border: 1px solid #555;
+            color: #d4d4d4; padding: 6px 8px; border-radius: 4px;
+            font-family: monospace; font-size: 0.82rem; margin-bottom: 8px;
+        }
+        .card textarea { height: 80px; resize: vertical; }
+        .badge { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 0.7rem; font-weight: bold; margin-right: 6px; }
+        .GET    { background: #0e639c; color: #fff; }
+        .POST   { background: #2d7a2d; color: #fff; }
+        .PUT    { background: #7a5c00; color: #fff; }
+        .DELETE { background: #8b2020; color: #fff; }
+
+        button {
+            background: #0e639c; color: #fff; border: none; padding: 6px 14px;
+            border-radius: 4px; cursor: pointer; font-size: 0.82rem; font-family: monospace;
+        }
+        button:hover { background: #1177bb; }
+        .url-text { color: #4ec9b0; font-size: 0.8rem; margin-bottom: 8px; display: block; }
+
+        #output {
+            margin-top: 24px; background: #0d0d0d; border: 1px solid #3c3c3c;
+            border-radius: 6px; padding: 14px; min-height: 120px;
+            white-space: pre-wrap; font-size: 0.82rem; color: #ce9178;
+            max-height: 400px; overflow-y: auto;
+        }
+        .ok  { color: #4ec9b0; }
+        .err { color: #f44747; }
+    </style>
+</head>
+<body>
+
+<h1>Bookstore REST API — Test Panel</h1>
+<div id="base-info" style="color:#888; font-size:0.8rem; margin-bottom:16px;">
+    Base URL: <span id="base-url" style="color:#4ec9b0;"></span>
+</div>
+
+<!-- ========== BOOKS ========== -->
+<h2>📚 /api/books</h2>
+<div class="grid">
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/books</span>
+        <label>Lọc theo category_id (để trống = lấy tất cả)</label>
+        <input id="book-cat-filter" placeholder="VD: 1">
+        <button onclick="req('GET', '/api/books', null, 'book-cat-filter', 'category_id')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/books/{id}</span>
+        <label>ID sách</label>
+        <input id="book-get-id" placeholder="VD: 1">
+        <button onclick="reqId('GET', '/api/books', 'book-get-id')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge POST">POST</span><span class="url-text">/api/books</span>
+        <label>Body JSON</label>
+        <textarea id="book-post-body">{
+  "title": "Sách mới",
+  "author": "Tác giả",
+  "price": 50000,
+  "category_id": 1,
+  "description": "Mô tả",
+  "quantity": 10
+}</textarea>
+        <button onclick="reqBody('POST', '/api/books', 'book-post-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge PUT">PUT</span><span class="url-text">/api/books/{id}</span>
+        <label>ID sách</label>
+        <input id="book-put-id" placeholder="VD: 1" style="margin-bottom:8px">
+        <label>Body JSON (chỉ điền field muốn sửa)</label>
+        <textarea id="book-put-body">{
+  "price": 60000,
+  "quantity": 20
+}</textarea>
+        <button onclick="reqBodyId('PUT', '/api/books', 'book-put-id', 'book-put-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge DELETE">DELETE</span><span class="url-text">/api/books/{id}</span>
+        <label>ID sách</label>
+        <input id="book-del-id" placeholder="VD: 1">
+        <button onclick="reqId('DELETE', '/api/books', 'book-del-id')">Gửi</button>
+    </div>
+</div>
+
+<!-- ========== CATEGORIES ========== -->
+<h2>🏷️ /api/categories</h2>
+<div class="grid">
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/categories</span>
+        <button onclick="req('GET', '/api/categories')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/categories/{id}</span>
+        <label>ID thể loại</label>
+        <input id="cat-get-id" placeholder="VD: 1">
+        <button onclick="reqId('GET', '/api/categories', 'cat-get-id')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge POST">POST</span><span class="url-text">/api/categories</span>
+        <label>Body JSON</label>
+        <textarea id="cat-post-body">{
+  "name": "Thể loại mới"
+}</textarea>
+        <button onclick="reqBody('POST', '/api/categories', 'cat-post-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge PUT">PUT</span><span class="url-text">/api/categories/{id}</span>
+        <label>ID thể loại</label>
+        <input id="cat-put-id" placeholder="VD: 1" style="margin-bottom:8px">
+        <label>Body JSON</label>
+        <textarea id="cat-put-body">{
+  "name": "Tên mới"
+}</textarea>
+        <button onclick="reqBodyId('PUT', '/api/categories', 'cat-put-id', 'cat-put-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge DELETE">DELETE</span><span class="url-text">/api/categories/{id}</span>
+        <label>ID thể loại</label>
+        <input id="cat-del-id" placeholder="VD: 4">
+        <button onclick="reqId('DELETE', '/api/categories', 'cat-del-id')">Gửi</button>
+    </div>
+</div>
+
+<!-- ========== CUSTOMERS ========== -->
+<h2>👤 /api/customers</h2>
+<div class="grid">
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/customers</span>
+        <button onclick="req('GET', '/api/customers')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/customers/{id}</span>
+        <label>ID khách hàng</label>
+        <input id="cus-get-id" placeholder="VD: 2">
+        <button onclick="reqId('GET', '/api/customers', 'cus-get-id')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge POST">POST</span><span class="url-text">/api/customers</span>
+        <label>Body JSON</label>
+        <textarea id="cus-post-body">{
+  "fullname": "Nguyễn Văn A",
+  "phone": "0912345678",
+  "address": "Hà Nội",
+  "email": "vana@gmail.com",
+  "username": "vana",
+  "password": "123456"
+}</textarea>
+        <button onclick="reqBody('POST', '/api/customers', 'cus-post-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge PUT">PUT</span><span class="url-text">/api/customers/{id}</span>
+        <label>ID khách hàng</label>
+        <input id="cus-put-id" placeholder="VD: 2" style="margin-bottom:8px">
+        <label>Body JSON</label>
+        <textarea id="cus-put-body">{
+  "phone": "0999999999",
+  "address": "TP.HCM"
+}</textarea>
+        <button onclick="reqBodyId('PUT', '/api/customers', 'cus-put-id', 'cus-put-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge DELETE">DELETE</span><span class="url-text">/api/customers/{id}</span>
+        <label>ID khách hàng</label>
+        <input id="cus-del-id" placeholder="VD: 10">
+        <button onclick="reqId('DELETE', '/api/customers', 'cus-del-id')">Gửi</button>
+    </div>
+</div>
+
+<!-- ========== ORDERS ========== -->
+<h2>🧾 /api/orders</h2>
+<div class="grid">
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/orders</span>
+        <label>Lọc theo username (để trống = lấy tất cả)</label>
+        <input id="ord-user-filter" placeholder="VD: eden">
+        <button onclick="req('GET', '/api/orders', null, 'ord-user-filter', 'username')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge GET">GET</span><span class="url-text">/api/orders/{id}</span>
+        <label>ID đơn hàng</label>
+        <input id="ord-get-id" placeholder="VD: 2">
+        <button onclick="reqId('GET', '/api/orders', 'ord-get-id')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge POST">POST</span><span class="url-text">/api/orders</span>
+        <label>Body JSON</label>
+        <textarea id="ord-post-body">{
+  "username": "khai",
+  "items": [
+    { "book_id": 3, "quantity": 1 },
+    { "book_id": 7, "quantity": 2 }
+  ]
+}</textarea>
+        <button onclick="reqBody('POST', '/api/orders', 'ord-post-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge PUT">PUT</span><span class="url-text">/api/orders/{id}</span>
+        <label>ID đơn hàng</label>
+        <input id="ord-put-id" placeholder="VD: 2" style="margin-bottom:8px">
+        <label>Body JSON</label>
+        <textarea id="ord-put-body">{
+  "status": "Đang giao"
+}</textarea>
+        <button onclick="reqBodyId('PUT', '/api/orders', 'ord-put-id', 'ord-put-body')">Gửi</button>
+    </div>
+
+    <div class="card">
+        <span class="badge DELETE">DELETE</span><span class="url-text">/api/orders/{id}</span>
+        <label>ID đơn hàng</label>
+        <input id="ord-del-id" placeholder="VD: 15">
+        <button onclick="reqId('DELETE', '/api/orders', 'ord-del-id')">Gửi</button>
+    </div>
+</div>
+
+<!-- Output -->
+<h2>📤 Kết quả</h2>
+<div id="output">Nhấn một nút bất kỳ để xem kết quả...</div>
+
+<script>
+    // Tự động xác định base URL
+    const origin = window.location.origin;
+    const pathParts = window.location.pathname.split('/');
+    // Tìm tên thư mục gốc project (bookstore)
+    const projectIdx = pathParts.findIndex(p => p === 'bookstore');
+    const base = projectIdx >= 0
+        ? origin + pathParts.slice(0, projectIdx + 1).join('/')
+        : origin;
+    document.getElementById('base-url').textContent = base;
+
+    const out = document.getElementById('output');
+
+    function show(method, url, status, data) {
+        const ok = status >= 200 && status < 300;
+        out.className = ok ? 'ok' : 'err';
+        out.textContent =
+            `${method} ${url}\nHTTP ${status}\n\n` +
+            JSON.stringify(data, null, 2);
+    }
+
+    async function call(method, url, body) {
+        try {
+            const opts = { method, headers: { 'Content-Type': 'application/json' } };
+            if (body) opts.body = JSON.stringify(body);
+            const res = await fetch(url, opts);
+            const text = await res.text();
+            let data;
+            try { data = JSON.parse(text); } catch { data = text; }
+            show(method, url, res.status, data);
+        } catch (e) {
+            out.className = 'err';
+            out.textContent = 'Lỗi kết nối: ' + e.message;
+        }
+    }
+
+    // GET danh sách, có thể có query param
+    function req(method, path, bodyId, filterId, filterKey) {
+        let url = base + path;
+        if (filterId) {
+            const val = document.getElementById(filterId).value.trim();
+            if (val) url += '?' + filterKey + '=' + encodeURIComponent(val);
+        }
+        const body = bodyId ? tryParse(bodyId) : null;
+        call(method, url, body);
+    }
+
+    // GET/DELETE theo ID
+    function reqId(method, path, idField) {
+        const id = document.getElementById(idField).value.trim();
+        if (!id) { alert('Vui lòng nhập ID'); return; }
+        call(method, base + path + '/' + id, null);
+    }
+
+    // POST với body JSON
+    function reqBody(method, path, bodyField) {
+        const body = tryParse(bodyField);
+        if (body === null) return;
+        call(method, base + path, body);
+    }
+
+    // PUT với ID + body JSON
+    function reqBodyId(method, path, idField, bodyField) {
+        const id = document.getElementById(idField).value.trim();
+        if (!id) { alert('Vui lòng nhập ID'); return; }
+        const body = tryParse(bodyField);
+        if (body === null) return;
+        call(method, base + path + '/' + id, body);
+    }
+
+    function tryParse(fieldId) {
+        try {
+            return JSON.parse(document.getElementById(fieldId).value);
+        } catch {
+            alert('JSON không hợp lệ trong ô body');
+            return null;
+        }
+    }
+</script>
+</body>
+</html>
