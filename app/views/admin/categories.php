@@ -1,3 +1,4 @@
+// Thanh vien 2: Chinh sua giao dien views
 <?php $pageTitle = 'Admin - Thể loại'; ?>
 <!DOCTYPE html>
 <html lang="vi">
