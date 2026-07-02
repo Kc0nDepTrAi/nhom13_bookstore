@@ -1,3 +1,4 @@
+// Thanh vien 2: Toi uu he thong core
 <?php
 namespace App\Core;
 
