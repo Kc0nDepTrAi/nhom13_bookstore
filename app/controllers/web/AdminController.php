@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// Thanh vien 2: Hoan thanh nhiem vu feature-app
->>>>>>> ffa11817ea7a2017892626d2af89a75d153c614b
 <?php
 namespace App\Controllers\Web;
 
