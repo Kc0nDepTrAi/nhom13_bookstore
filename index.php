@@ -9,10 +9,13 @@
 // ── Bootstrap ──────────────────────────────────────────
 require_once __DIR__ . '/config/config.php';
 
-// Autoloader đơn giản (không dùng Composer)
+// Autoloader chuẩn xử lý phân biệt hoa thường trên Linux
 spl_autoload_register(function (string $class): void {
-    // Chuyển namespace "App\Core\Database" → "app/core/Database.php"
-    $file = APP_PATH . '/' . str_replace(['App/', '\\'], ['', '/'], $class) . '.php';
+    $parts = explode('\\', $class);
+    $fileName = array_pop($parts) . '.php'; // Giữ nguyên tên file viết hoa (VD: Router.php)
+    $dirPath = strtolower(implode('/', $parts)); // Ép toàn bộ tên thư mục thành chữ thường (VD: app/core)
+    
+    $file = __DIR__ . '/' . $dirPath . '/' . $fileName;
     if (file_exists($file)) require $file;
 });
 
