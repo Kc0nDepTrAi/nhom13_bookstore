@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// Thanh vien 2: Xu ly du lieu models
->>>>>>> ffa11817ea7a2017892626d2af89a75d153c614b
 <?php
 namespace App\Models;
 
