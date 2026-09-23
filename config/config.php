@@ -12,10 +12,10 @@ define('APP_PATH',   ROOT_PATH . '/app');
 define('VIEWS_PATH', APP_PATH  . '/views');
 
 // Database
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'bookstore_db');
+define('DB_HOST', 'db');
+define('DB_NAME', 'bookstore');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
 define('DB_CHARSET', 'utf8mb4');
 
 // Ảnh
