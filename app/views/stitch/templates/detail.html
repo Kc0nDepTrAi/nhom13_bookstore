@@ -46,12 +46,8 @@
 <div class="absolute inset-y-0 right-0 w-2 pointer-events-none bg-gradient-to-l from-black/10 to-transparent"></div>
 </div>
 <!-- Quick Read & Flipbook Access Strip -->
-<div class="mt-6 pt-4 flex items-center justify-between gap-space-sm bg-surface-container-low/60 p-3 rounded-lg">
-<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
-<span class="material-symbols-outlined text-[20px] text-primary">menu_book</span>
-<span>Xem thử 24 trang đầu</span>
-</div>
-<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container font-title-sm text-title-sm text-primary shadow-sm transition-colors flex items-center gap-1" onclick="document.getElementById('modal-sample').classList.remove('hidden')" type="button">
+<div class="mt-6 pt-4 flex items-center justify-center gap-space-sm bg-surface-container-low/60 p-3 rounded-lg">
+<button class="px-4 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container font-title-sm text-title-sm text-primary shadow-sm transition-colors flex items-center gap-1" onclick="document.getElementById('modal-sample').classList.remove('hidden')" type="button">
 <span>Đọc mục lục</span>
 <span class="material-symbols-outlined text-[16px]">visibility</span>
 </button>
@@ -93,9 +89,6 @@
 <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-2" data-live="title">
                 Nỗi Buồn Chiến Tranh
               </h1>
-<p class="font-body-md text-body-md text-on-surface-variant italic">
-                Kiệt tác văn chương đương đại Việt Nam – Giải thưởng Hội Nhà Văn 1991
-              </p>
 </div>
 <!-- Authorship & Publishing Attributes -->
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm py-space-sm px-space-md rounded-lg bg-surface-container-low/50">
@@ -149,10 +142,6 @@
 <button class="hover:text-primary transition-colors flex items-center gap-1" type="button">
 <span class="material-symbols-outlined text-[18px]">share</span>
 <span>Chia sẻ sách này</span>
-</button>
-<button class="hover:text-primary transition-colors flex items-center gap-1" type="button">
-<span class="material-symbols-outlined text-[18px]">compare_arrows</span>
-<span>So sánh phiên bản</span>
 </button>
 <span class="text-outline">Mã ISBN: 978-604-989-123-4</span>
 </div>
@@ -301,15 +290,15 @@
 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-sm mb-space-lg">
 <div>
 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold block mb-1">Cùng dòng chảy văn chương</span>
-<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Tác Phẩm Văn Học Đồng Điệu</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight" id="related-section-title">Tác Phẩm Văn Học Đồng Điệu</h2>
 </div>
-<a class="font-title-sm text-title-sm text-primary hover:text-primary-container flex items-center gap-1" href="#">
+<a class="font-title-sm text-title-sm text-primary hover:text-primary-container flex items-center gap-1" id="related-collection-link" href="#">
 <span>Xem trọn bộ tuyển tập</span>
 <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
 </div>
 <!-- Book Cards Grid -->
-<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md" id="related-books-grid">
 <!-- Book Card 1 -->
 <div class="group bg-surface-container-lowest p-4 rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-1 flex flex-col justify-between">
 <div>
