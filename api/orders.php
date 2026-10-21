@@ -1,4 +1,6 @@
 <?php
+if (realpath($_SERVER['SCRIPT_FILENAME']??'')===__FILE__ && PHP_SAPI!=='cli') {http_response_code(410);header('Content-Type: application/json');echo json_encode(['success'=>false,'message'=>'Sử dụng REST API hiện tại.']);exit;}
+
 // api/orders.php — CRUD đơn hàng
 // Bảng: orders (id, username, total_price, status, created_at)
 //        order_details (id, order_id, book_id, quantity, price)

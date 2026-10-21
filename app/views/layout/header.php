@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($pageTitle ?? 'Shop của tôi') ?></title>
+    <title><?= htmlspecialchars($pageTitle ?? 'BOOKSTORE123') ?></title>
     <style>
         :root {
             --primary: #A8E6CF;
@@ -71,12 +71,13 @@
 
         [v-cloak] { display: none !important; }
     </style>
+<?php require __DIR__ . '/design-assets.php'; ?>
 </head>
 <body>
 
 <nav class="navbar">
     <div class="nav-left">
-        <a href="<?= BASE_URL ?>/" class="logo">📚 Shop của tôi</a>
+        <a href="<?= BASE_URL ?>/" class="logo">📚 BOOKSTORE123</a>
         <div class="dropdown">
             <button class="dropbtn">Danh mục ▾</button>
             <div class="dropdown-content">

@@ -49,6 +49,22 @@ class UserModel extends Model
      */
     public function verifyLogin(string $username, string $password): ?array
     {
+        $path=sys_get_temp_dir().'/bookstore-login-'.hash('sha256',ROOT_PATH.'|'.($_SERVER['REMOTE_ADDR']??'cli')).'.json';
+        $lock=fopen($path,'c+');
+        if (!$lock || !flock($lock,LOCK_EX)) throw new \RuntimeException('Không thể kiểm tra giới hạn đăng nhập.');
+        try {
+            $state=json_decode(stream_get_contents($lock),true)?:['count'=>0,'until'=>0];
+            if (($state['until']??0)<time()) $state=['count'=>0,'until'=>time()+900];
+            if ($state['count']>=10) { http_response_code(429); throw new \RuntimeException('Đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau 15 phút.'); }
+            $user=$this->verifyLoginUnchecked($username,$password);
+            $state=$user?['count'=>0,'until'=>0]:['count'=>$state['count']+1,'until'=>$state['until']];
+            rewind($lock);ftruncate($lock,0);fwrite($lock,json_encode($state));fflush($lock);
+            return $user;
+        } finally {flock($lock,LOCK_UN);fclose($lock);}
+    }
+
+    private function verifyLoginUnchecked(string $username, string $password): ?array
+    {
         $user = $this->findByUsername($username);
         if (!$user) return null;
 
@@ -66,6 +82,13 @@ class UserModel extends Model
             return $user;
         }
         return null;
+    }
+
+    public function verifyPassword(string $username, string $password): bool
+    {
+        $u=$this->findByUsername($username);
+        if (!$u) return false;
+        return str_starts_with($u['password'],'$2y$') || str_starts_with($u['password'],'$argon') ? password_verify($password,$u['password']) : hash_equals($u['password'],$password);
     }
 
     /** Lấy danh sách khách hàng (role = 'user') */

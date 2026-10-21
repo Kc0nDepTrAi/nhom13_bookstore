@@ -120,6 +120,8 @@ CREATE TABLE `orders` (
   `username` varchar(50) DEFAULT NULL,
   `total_price` decimal(10,2) DEFAULT NULL,
   `status` varchar(50) DEFAULT 'Đang xử lý',
+  `notes` varchar(2000) NOT NULL DEFAULT '',
+  `payment_method` varchar(10) NOT NULL DEFAULT 'cash',
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -329,3 +331,20 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Purchased-book star ratings (revision 1).
+CREATE TABLE IF NOT EXISTS `book_reviews` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating` tinyint unsigned NOT NULL,
+  `comment` varchar(2000) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `book_reviews_reader_book` (`user_id`, `book_id`),
+  KEY `book_reviews_book` (`book_id`),
+  CONSTRAINT `book_reviews_rating_range` CHECK (`rating` BETWEEN 1 AND 5),
+  CONSTRAINT `book_reviews_book_fk` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `book_reviews_user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

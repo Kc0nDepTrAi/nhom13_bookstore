@@ -69,6 +69,7 @@ class UserApiController extends Controller
             return;
         }
 
+        if (!is_string($data['password']) || strlen($data['password'])<6) { $this->error('Mật khẩu phải ít nhất 6 ký tự'); return; }
         $id = $this->model->register($data);
         $this->success(['id' => $id], 'Tạo người dùng thành công', 201);
     }
@@ -91,6 +92,13 @@ class UserApiController extends Controller
         $data = $this->request->allInput();
 
         // Cập nhật profile
+        if (!empty($data['password'])) {
+            if (!is_string($data['password']) || strlen($data['password'])<6) { $this->error('Mật khẩu phải ít nhất 6 ký tự'); return; }
+            if (!$this->isAdmin() || $userId===(int)$_SESSION['user_id']) {
+                $current=$data['current_password']??'';
+                if (!is_string($current) || !$this->model->verifyPassword($_SESSION['username'],$current)) { $this->error('Mật khẩu hiện tại không chính xác.',401); return; }
+            }
+        }
         $updated = $this->model->updateProfile($userId, $data);
 
         // Đổi mật khẩu nếu có

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>BOOKSTORE123 - Nhà Sách Trực Tuyến</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#006a63","on-primary-fixed-variant":"#005049","on-error":"#ffffff","on-tertiary-fixed":"#2a1700","surface-container-high":"#dce9ff","tertiary":"#825100","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#80d5cb","tertiary-fixed-dim":"#ffb95f","on-secondary-fixed-variant":"#00504a","primary-container":"#008378","on-surface-variant":"#3d4947","surface-bright":"#f8f9ff","on-secondary-fixed":"#00201d","surface-dim":"#cbdbf5","error":"#ba1a1a","tertiary-fixed":"#ffddb8","inverse-primary":"#6bd8cb","inverse-surface":"#213145","surface-tint":"#006a61","outline-variant":"#bcc9c6","inverse-on-surface":"#eaf1ff","on-secondary-container":"#006f67","on-primary-fixed":"#00201d","surface-container-highest":"#d3e4fe","secondary-fixed":"#9cf2e8","on-primary":"#ffffff","surface-container-low":"#eff4ff","on-error-container":"#93000a","on-background":"#0b1c30","on-tertiary":"#ffffff","on-secondary":"#ffffff","surface":"#f8f9ff","surface-variant":"#d3e4fe","tertiary-container":"#a36700","on-tertiary-container":"#fffbff","on-surface":"#0b1c30","primary-fixed":"#89f5e7","background":"#f8f9ff","primary-fixed-dim":"#6bd8cb","on-tertiary-fixed-variant":"#653e00","secondary-container":"#99efe5","error-container":"#ffdad6","surface-container":"#e5eeff","primary":"#00685f","on-primary-container":"#f4fffc","outline":"#6d7a77"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-md":"1rem","margin-mobile":"1rem","space-2xl":"4rem","space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-sm":"0.5rem","gutter":"1.5rem","gutter-mobile":"0.75rem","space-xl":"2.5rem"},fontFamily:{"body-sm":["Be Vietnam Pro"],"headline-lg-mobile":["Newsreader"],"headline-sm":["Newsreader"],"display-hero-mobile":["Newsreader"],"title-md":["Be Vietnam Pro"],"label-sm":["Be Vietnam Pro"],"price-lg":["Be Vietnam Pro"],"label-md":["Be Vietnam Pro"],"headline-md":["Newsreader"],"display-hero":["Newsreader"],"title-sm":["Be Vietnam Pro"],"body-lg":["Be Vietnam Pro"],"headline-lg":["Newsreader"],"price-md":["Be Vietnam Pro"],"body-md":["Be Vietnam Pro"]},fontSize:{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"500"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"600"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"price-lg":["22px",{"lineHeight":"28px","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"500"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"600"}],"title-sm":["14px",{"lineHeight":"20px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"600"}],"price-md":["16px",{"lineHeight":"22px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1320px] mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm text-decoration-none" data-path="trang-chu" href="#"><img alt="BOOKSTORE123 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw5tPQ6BZGGgANNm_y-i9QeseQ3tQABi4zzE5C3XNV0-Jg-qSNfEpx2JK1NGJQFe3E6CZoXEap3ebt3qYrYmfprDwKcQV5Z8jgQ2fs6ktJeF4z20nrwgZv_K7lgdB0ow71L0t1chmNdEmQKslXagxyj35gHobBkmKSZJwX4D6hDmq6nx1OuUvPlxWMjvuLpfqgKOtAvLvkvcRFVtb4OBQCrPqa2bcJIxea8l66REq7ie4JiEEoqA"/><span class="font-headline-md text-headline-md text-primary tracking-tight">BOOKSTORE123</span></a><div class="relative group hidden lg:block"><button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors font-title-sm text-title-sm" type="button"><span class="material-symbols-outlined text-[20px] text-primary">auto_stories</span><span>Danh mục sách</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button><div class="absolute left-0 top-full mt-space-xs w-60 bg-surface-container-lowest rounded-xl shadow-[0_10px_15px_-3px_rgba(15,23,42,0.05),0_4px_6px_-4px_rgba(15,23,42,0.03)] p-space-sm hidden group-hover:block z-50"><a class="block px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" data-path="danh-muc-van-hoc" href="#">Văn học kinh điển &amp; Hiện đại</a><a class="block px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" data-path="danh-muc-kinh-te" href="#">Kinh tế &amp; Quản trị kinh doanh</a><a class="block px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" data-path="danh-muc-tam-ly" href="#">Tâm lý &amp; Phát triển bản thân</a><a class="block px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" data-path="danh-muc-lich-su" href="#">Lịch sử &amp; Triết học</a><a class="block px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" data-path="danh-muc-thieu-nhi" href="#">Sách thiếu nhi &amp; Giáo dục</a></div></div></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><form action="#" class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px]">search</span><input class="w-full h-11 pl-11 pr-24 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-[0_1px_3px_rgba(15,23,42,0.04)]" placeholder="Tìm kiếm tựa sách, tác giả, nhà xuất bản, ISBN..." type="search"/><button class="absolute right-1.5 h-8 px-space-md bg-primary text-on-primary rounded-lg font-title-sm text-title-sm hover:bg-primary-container transition-colors" type="submit">Tìm</button></form></div><div class="flex items-center gap-space-md"><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-bold"><a class="font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="trang-chu" href="#">Trang chủ</a><a class="font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="sach-moi" href="#">Sách mới</a><a class="font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="sach-ban-chay" href="#">Bán chạy</a><a class="font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="bo-suu-tap" href="#">Bộ sưu tập</a></nav><a aria-label="Giỏ hàng" class="relative p-space-sm rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors" data-path="gio-hang" href="#"><span class="material-symbols-outlined text-[24px]">local_mall</span><span class="absolute -top-1 -right-1 flex items-center justify-center min-w-[20px] h-5 px-1 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm">3</span></a><div class="relative group"><button class="flex items-center gap-space-xs p-space-xs rounded-lg hover:bg-surface-container-low transition-colors" type="button"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="material-symbols-outlined text-[18px] text-on-surface-variant hidden sm:block">expand_more</span></button><div class="absolute right-0 top-full mt-space-xs w-56 bg-surface-container-lowest rounded-xl shadow-[0_10px_15px_-3px_rgba(15,23,42,0.05),0_4px_6px_-4px_rgba(15,23,42,0.03)] p-space-sm hidden group-hover:block z-50"><div class="px-space-md py-space-xs"><p class="font-title-sm text-title-sm text-on-surface">Độc giả thân thiết</p><p class="font-body-sm text-body-sm text-on-surface-variant truncate">reader@bookstore123.vn</p></div><div class="my-space-xs h-[1px] bg-surface-container-high"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low transition-colors" data-path="ho-so-ca-nhan" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">badge</span>Tài khoản của tôi</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low transition-colors" data-path="don-hang-cua-toi" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">receipt_long</span>Đơn mua &amp; Đang giao</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-secondary hover:bg-surface-container-low transition-colors" data-path="quan-tri-vien" href="#"><span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>Kênh quản trị</a><div class="my-space-xs h-[1px] bg-surface-container-high"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="dang-xuat" href="#"><span class="material-symbols-outlined text-[18px]">logout</span>Đăng xuất</a></div></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full pb-24">
+<!-- Top Mobile Bar / Subheader -->
+<section class="w-full bg-surface-container-lowest px-margin-mobile py-space-sm shadow-sm sticky top-20 z-30">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<button aria-label="Quay lại" class="w-9 h-9 rounded-full bg-surface-container-low text-on-surface flex items-center justify-center active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Tài Khoản &amp; Đơn Hàng</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Minh Triết • Độc giả thân thiết</p>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        Hạng Bạc
+      </span>
+</div>
+<!-- Segmented Main Tabs Switcher -->
+<div class="mt-space-sm p-1 bg-surface-container-low rounded-xl flex items-center gap-1">
+<button class="flex-1 py-space-xs px-space-sm rounded-lg font-title-sm text-title-sm text-on-primary bg-primary shadow-sm flex items-center justify-center gap-1.5 transition-all" id="tab-btn-orders" onclick="switchView('orders')" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Đơn hàng của tôi</span>
+<span class="px-1.5 py-0.2 rounded-full bg-on-primary/20 text-on-primary font-label-sm text-label-sm">3</span>
+</button>
+<button class="flex-1 py-space-xs px-space-sm rounded-lg font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface bg-transparent flex items-center justify-center gap-1.5 transition-all" id="tab-btn-profile" onclick="switchView('profile')" type="button">
+<span class="material-symbols-outlined text-[18px]">manage_accounts</span>
+<span>Hồ sơ cá nhân</span>
+</button>
+</div>
+</section>
+<!-- TAB 1: ĐƠN HÀNG CỦA TÔI -->
+<div class="w-full flex flex-col gap-space-md px-margin-mobile pt-space-md" id="section-orders">
+<!-- Horizontal Chip Filter Row -->
+<div class="w-full overflow-x-auto no-scrollbar py-0.5 flex items-center gap-space-xs">
+<button class="chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-primary text-on-primary shadow-sm transition-colors" onclick="filterChips(this, 'all')" type="button">Tất cả (3)</button>
+<button class="chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" onclick="filterChips(this, 'shipping')" type="button">Đang giao (1)</button>
+<button class="chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" onclick="filterChips(this, 'processing')" type="button">Đang xử lý (0)</button>
+<button class="chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" onclick="filterChips(this, 'pending')" type="button">Chờ xử lý (0)</button>
+<button class="chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" onclick="filterChips(this, 'completed')" type="button">Đã hoàn thành (1)</button>
+<button class="chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" onclick="filterChips(this, 'cancelled')" type="button">Đã hủy (1)</button>
+</div>
+<!-- Active Orders List -->
+<div class="flex flex-col gap-space-md" id="orders-list-container">
+<!-- Order Card #DH-10482 (Đang giao) -->
+<article class="order-item w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm" data-status="shipping" id="order-card-10482">
+<!-- Order Header -->
+<div class="flex items-center justify-between pb-space-xs bg-surface-container-low/50 -mx-space-md -mt-space-md px-space-md pt-space-sm rounded-t-xl">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-primary">local_shipping</span>
+<span class="font-title-sm text-title-sm text-on-surface font-semibold tracking-wide">#DH-10482</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">• 14/10/2024</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Đang giao
+          </span>
+</div>
+<!-- Book Item 1 -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<div class="relative w-14 h-20 rounded-md overflow-hidden bg-surface-container-low shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Cover of the Vietnamese literary classic novel Noi Buon Chien Tranh by author Bao Ninh, featuring an artistic vintage watercolor style with soft green and muted paper tones, minimalist modern Vietnamese typography, elegant atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm-jSZ9kboC8P_iV7KflQCMlFkBoHnwwEr2HFvx4S4Zi40EHj66TYJJFT7Lv_4zwEiylgqZktMxOBnPwKLPbWGOtMOJSFtHGllukrxxSo7TUslmp5kdcaxk5VQMDdvhWQ78Ed5Bp43tRXvRVNo3uYTkMauQWUkNitfRyxOOmQph1AfzIzhcohJ-TnEmMaaRB9d2jF3wS6oC6JvInBeJx_xu_08LvGaH0M7KwbYHKCYaykj3_rebw"/>
+<div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-r from-black/20 to-transparent"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between h-20 py-0.5">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">BẢO NINH</p>
+<h2 class="font-headline-sm text-body-md text-on-surface font-semibold line-clamp-1 leading-snug">Nỗi Buồn Chiến Tranh</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bìa mềm cao cấp</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Số lượng: x1</span>
+<span class="font-price-md text-price-md text-primary">125.000 ₫</span>
+</div>
+</div>
+</div>
+<!-- Book Item 2 -->
+<div class="flex items-center gap-space-sm pt-space-xs bg-surface-container-low/30 rounded-lg p-space-xs">
+<div class="relative w-14 h-20 rounded-md overflow-hidden bg-surface-container-low shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Cover of Thinking Fast and Slow book in Vietnamese translation Tu Duy Nhanh Va Cham, clean cerebral Scandinavian editorial design, deep teal and warm white palette with crisp typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm5wS8TWtYAwHs8bGHSJIB9aaKdt-Dqm9yn1G0RrVnuXnIovdjNspSZF6kQNyRQUOdVAsuRF9O2fJgQs1juqpHjw_il9k_D_TZmXXzhu0I-XA5igCLWmmyGQ5LG34bi9SVrjGoKR5hELb7jhakl_af7g_PlkRmhDhNu3DR6YLrWqdVontUrg5t462BugO8gYLfD1t2XzeeVicJOLrgi989k7FRougYIoednpSpdSa7mfsykVhPmQ"/>
+<div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-r from-black/20 to-transparent"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between h-20 py-0.5">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">DANIEL KAHNEMAN</p>
+<h2 class="font-headline-sm text-body-md text-on-surface font-semibold line-clamp-1 leading-snug">Tư Duy Nhanh Và Chậm</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tái bản 2024</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Số lượng: x1</span>
+<span class="font-price-md text-price-md text-primary">245.000 ₫</span>
+</div>
+</div>
+</div>
+<!-- Total summary & Action buttons -->
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tổng đơn hàng (2 cuốn):</span>
+<span class="font-price-lg text-price-lg text-on-surface font-bold">370.000 ₫</span>
+</div>
+<div class="flex items-center gap-space-xs pt-space-xs">
+<button class="h-10 px-space-sm rounded-lg bg-surface-container-low text-error hover:bg-error-container hover:text-on-error-container flex items-center justify-center gap-1 font-title-sm text-title-sm transition-colors" onclick="openDeleteDialog('#DH-10482', 'order-card-10482')" title="Xóa đơn hàng" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>Xóa đơn</span>
+</button>
+<button class="flex-1 h-10 px-space-md rounded-lg bg-primary text-on-primary hover:bg-primary-container flex items-center justify-center gap-1.5 font-title-sm text-title-sm shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>Xem chi tiết đơn</span>
+</button>
+</div>
+</article>
+<!-- Order Card #DH-10478 (Đã hủy) -->
+<article class="order-item w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm opacity-95" data-status="cancelled" id="order-card-10478">
+<!-- Order Header -->
+<div class="flex items-center justify-between pb-space-xs bg-surface-container-low/50 -mx-space-md -mt-space-md px-space-md pt-space-sm rounded-t-xl">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error">cancel</span>
+<span class="font-title-sm text-title-sm text-on-surface font-semibold tracking-wide">#DH-10478</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">• 10/10/2024</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm flex items-center gap-1 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            Đã hủy
+          </span>
+</div>
+<!-- Book Item -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<div class="relative w-14 h-20 rounded-md overflow-hidden bg-surface-container-low shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Cover of Leo Tolstoy War and Peace book Chien Tranh Va Hoa Binh in Vietnamese hardcover edition with antique gold typography and rich classic literature aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTmfeY1FqSp26fLFN6i152xCbrcIUnx9KLNGNGsbuuv_z9TbDvifKGpXFrnRq7y-SBl3SBIJZGAPd4Mvfjg7hvR8p4-QJSCzsJG3jl_51jkMDTjZjeJ9s7lyUrTtFjhPtReAXsX_sfLvwZmBK66Ztwlju93nm_Cb3Q6nOoTwOUo5syoaNA03PAAykEQ3rjko8Cb6MJxJfjU9fp2WDqJl-XKqMEjelz279_LhjGYoMhbZoQ3Gc7gg"/>
+<div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-r from-black/20 to-transparent"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between h-20 py-0.5">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">LEO TOLSTOY</p>
+<h2 class="font-headline-sm text-body-md text-on-surface font-semibold line-clamp-1 leading-snug">Chiến Tranh Và Hòa Bình</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Bìa cứng trọn bộ 2 tập</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Số lượng: x1</span>
+<span class="font-price-md text-price-md text-on-surface">320.000 ₫</span>
+</div>
+</div>
+</div>
+<!-- Total summary & Action buttons -->
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tổng tiền:</span>
+<span class="font-price-lg text-price-lg text-on-surface font-bold">320.000 ₫</span>
+</div>
+<div class="flex items-center gap-space-xs pt-space-xs">
+<button class="h-10 px-space-sm rounded-lg bg-surface-container-low text-error hover:bg-error-container hover:text-on-error-container flex items-center justify-center gap-1 font-title-sm text-title-sm transition-colors" onclick="openDeleteDialog('#DH-10478', 'order-card-10478')" title="Xóa đơn hàng" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>Xóa đơn</span>
+</button>
+<button class="flex-1 h-10 px-space-md rounded-lg bg-secondary text-on-secondary hover:bg-primary flex items-center justify-center gap-1.5 font-title-sm text-title-sm shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Mua lại</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Empty State Illustration (Hidden by default, shown when empty or filter empty) -->
+<div class="hidden w-full flex-col items-center justify-center p-space-xl bg-surface-container-lowest rounded-xl shadow-sm text-center" id="orders-empty-state">
+<div class="w-20 h-20 rounded-full bg-surface-container-low flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-primary text-[40px]">auto_stories</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Chưa có đơn hàng nào</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-space-lg">Tủ sách tri thức vẫn đang đón đợi những trang sách mới đồng hành cùng bạn mỗi ngày.</p>
+<button class="h-11 px-space-xl rounded-lg bg-primary text-on-primary font-title-sm text-title-sm hover:bg-primary-container transition-colors shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+<span>Khám phá sách ngay</span>
+</button>
+</div>
+</div>
+<!-- TAB 2: HỒ SƠ & BẢO MẬT (Hidden initially) -->
+<div class="hidden w-full flex-col gap-space-md px-margin-mobile pt-space-md" id="section-profile">
+<!-- User Profile Hero Preview -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex items-center gap-space-md">
+<div class="relative w-16 h-16 rounded-full overflow-hidden bg-surface-container-low shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of a refined young Vietnamese reader, intellectual and friendly demeanor, warm soft studio lighting, styled in minimalist linen shirt against library book wall backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvoTRobToI31yWAv0HjP3915yp_F6vLGYZ8ARqcmaDf_qmd0KPaLn4bw5RROFZtIGNS0ofOTK6aJTdEP1cXmmgWWobkCx9wFKvUnpTkiaeWxNbV6mFPSOKyV8cp--bBmnuPaCCnUt-bGUq9EESnHTTiLriPd1R2BlbFux7Hsq7KuQnOYkZ2XYe4EetZQtmS3WU1YekWFTIuKfjzpwC4qRTJejk6xT7lkL9kVHMFIQ6jBPHqy6-KQ"/>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="font-headline-sm text-body-lg text-on-surface font-semibold truncate">Trần Minh Triết</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">reader.triet@bookstore123.vn</p>
+<span class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span> Đã xác thực CCCD
+        </span>
+</div>
+</div>
+<!-- Section: Thông Tin Độc Giả -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">badge</span>
+<h3 class="font-headline-sm text-body-lg text-on-surface font-bold">Thông tin cá nhân</h3>
+</div>
+<form class="flex flex-col gap-space-sm" onsubmit="event.preventDefault(); showToast('Đã lưu thay đổi hồ sơ thành công!');">
+<!-- Username (Readonly) -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface-variant flex items-center justify-between">
+<span>Tên đăng nhập</span>
+<span class="font-label-sm text-label-sm text-outline">(Cố định không thể đổi)</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">lock</span>
+<input class="w-full h-11 pl-10 pr-3 rounded-lg bg-surface-container text-on-surface-variant font-body-md text-body-md cursor-not-allowed" readonly="" type="text" value="minhtriet"/>
+</div>
+</div>
+<!-- Full Name -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Họ và tên <span class="text-error">*</span></label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" type="text" value="Trần Minh Triết"/>
+</div>
+<!-- Phone -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Số điện thoại <span class="text-error">*</span></label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" type="tel" value="0918 345 678"/>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Địa chỉ email <span class="text-error">*</span></label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" type="email" value="minhtriet.reading@gmail.com"/>
+</div>
+<!-- Delivery Address -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Địa chỉ nhận hàng mặc định <span class="text-error">*</span></label>
+<textarea class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" rows="2">Số 45 Đường Tràng Tiền, Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội</textarea>
+</div>
+<button class="mt-space-xs w-full h-11 rounded-lg bg-primary text-on-primary font-title-sm text-title-sm hover:bg-primary-container transition-colors shadow-sm flex items-center justify-center gap-1.5 active:scale-[0.99]" type="submit">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Lưu thay đổi</span>
+</button>
+</form>
+</div>
+<!-- Section: Đổi Mật Khẩu -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">password</span>
+<h3 class="font-headline-sm text-body-lg text-on-surface font-bold">Bảo mật &amp; Đổi mật khẩu</h3>
+</div>
+<form class="flex flex-col gap-space-sm" onsubmit="event.preventDefault(); showToast('Mật khẩu tài khoản đã được cập nhật an toàn!');">
+<!-- Current Password -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Mật khẩu hiện tại <span class="text-error">*</span></label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-3 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" placeholder="Nhập mật khẩu đang dùng" type="password"/>
+<button class="absolute right-3 text-outline hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">visibility_off</span></button>
+</div>
+</div>
+<!-- New Password -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Mật khẩu mới <span class="text-error">*</span></label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-3 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" placeholder="Ít nhất 8 ký tự kèm chữ hoa &amp; số" type="password"/>
+<button class="absolute right-3 text-outline hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">visibility_off</span></button>
+</div>
+</div>
+<!-- Confirm New Password -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-label-md text-on-surface">Xác nhận mật khẩu mới <span class="text-error">*</span></label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-3 pr-10 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none focus:shadow-md transition-all" placeholder="Nhập lại mật khẩu mới" type="password"/>
+<button class="absolute right-3 text-outline hover:text-on-surface" type="button"><span class="material-symbols-outlined text-[18px]">visibility_off</span></button>
+</div>
+</div>
+<button class="mt-space-xs w-full h-11 rounded-lg bg-secondary text-on-secondary font-title-sm text-title-sm hover:bg-primary transition-colors shadow-sm flex items-center justify-center gap-1.5 active:scale-[0.99]" type="submit">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+<span>Cập nhật mật khẩu</span>
+</button>
+</form>
+</div>
+<!-- Section: Vùng Nguy Hiểm (Xóa Tài Khoản) -->
+<div class="w-full bg-error-container/40 rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-error">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+<h3 class="font-headline-sm text-body-lg text-error font-bold">Khu vực nguy hiểm</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+        Khi bạn xác nhận xóa tài khoản, tất cả lịch sử đơn mua, điểm thưởng thành viên và thông tin sách đã lưu sẽ bị xóa vĩnh viễn khỏi hệ thống BOOKSTORE123 và không thể khôi phục.
+      </p>
+<div class="pt-space-xs">
+<button class="w-full h-11 rounded-lg bg-error text-on-error font-title-sm text-title-sm hover:bg-on-error-container transition-colors shadow-sm flex items-center justify-center gap-1.5 active:scale-[0.99]" onclick="openDeleteAccountDialog()" type="button">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+<span>Xóa tài khoản vĩnh viễn</span>
+</button>
+</div>
+</div>
+</div>
+<!-- MODAL: Xác Nhận Xóa Đơn Hàng Khỏi Lưu Trữ -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-margin-mobile" id="modal-delete-order">
+<!-- Backdrop scrim -->
+<div class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm" onclick="closeDeleteDialog()"></div>
+<!-- Dialog Card -->
+<div class="relative w-full max-w-sm bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md z-10 animate-scale-up">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-[28px]">delete_sweep</span>
+</div>
+<div class="text-center flex flex-col gap-1">
+<h4 class="font-headline-sm text-body-lg text-on-surface font-bold">Xác nhận xóa đơn hàng</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-normal mt-1">
+          Bạn có chắc chắn muốn xóa đơn hàng <span class="font-bold text-on-surface" id="dialog-order-id">#DH-10482</span> này khỏi danh sách lưu trữ? Hành động này không thể hoàn tác.
+        </p>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="h-11 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-title-sm text-title-sm transition-colors" onclick="closeDeleteDialog()" type="button">
+          Hủy
+        </button>
+<button class="h-11 rounded-lg bg-error text-on-error hover:bg-on-error-container font-title-sm text-title-sm transition-colors shadow-sm" onclick="confirmDeleteOrder()" type="button">
+          Xác nhận xóa đơn
+        </button>
+</div>
+</div>
+</div>
+<!-- MODAL: Xác Nhận Xóa Tài Khoản Vĩnh Viễn -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-margin-mobile" id="modal-delete-account">
+<!-- Backdrop scrim -->
+<div class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm" onclick="closeDeleteAccountDialog()"></div>
+<!-- Dialog Card -->
+<div class="relative w-full max-w-sm bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md z-10 animate-scale-up">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-[28px]">sentiment_very_dissatisfied</span>
+</div>
+<div class="text-center flex flex-col gap-1">
+<h4 class="font-headline-sm text-body-lg text-on-surface font-bold">Xác nhận hủy tài khoản</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-normal mt-1">
+          Tài khoản độc giả <span class="font-bold text-on-surface">minhtriet</span> cùng dữ liệu tủ sách cá nhân sẽ bị xóa vĩnh viễn. Bạn chắc chắn muốn thực hiện?
+        </p>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="h-11 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-title-sm text-title-sm transition-colors" onclick="closeDeleteAccountDialog()" type="button">
+          Hủy
+        </button>
+<button class="h-11 rounded-lg bg-error text-on-error hover:bg-on-error-container font-title-sm text-title-sm transition-colors shadow-sm" onclick="confirmDeleteAccount()" type="button">
+          Xóa tài khoản
+        </button>
+</div>
+</div>
+</div>
+<!-- Simple Toast Notification -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-inverse-surface text-inverse-on-surface px-space-md py-space-xs rounded-full font-body-sm text-body-sm shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-300" id="app-toast">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">check_circle</span>
+<span id="toast-message">Đã cập nhật dữ liệu thành công</span>
+</div>
+<!-- MOBILE BOTTOM NAVIGATION BAR -->
+<nav class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-lg shadow-[0_-4px_16px_rgba(11,28,48,0.06)] px-margin-mobile py-2 flex items-center justify-around">
+<!-- Trang chủ -->
+<a class="flex flex-col items-center gap-0.5 text-on-surface-variant hover:text-primary transition-colors py-1" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm">Trang chủ</span>
+</a>
+<!-- Khám phá -->
+<a class="flex flex-col items-center gap-0.5 text-on-surface-variant hover:text-primary transition-colors py-1" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="font-label-sm text-label-sm">Khám phá</span>
+</a>
+<!-- Giỏ hàng -->
+<a class="relative flex flex-col items-center gap-0.5 text-on-surface-variant hover:text-primary transition-colors py-1" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[22px]">local_mall</span>
+<span class="absolute -top-1 -right-2 w-4 h-4 bg-secondary text-on-secondary rounded-full font-label-sm text-[10px] flex items-center justify-center font-bold">3</span>
+</div>
+<span class="font-label-sm text-label-sm">Giỏ hàng</span>
+</a>
+<!-- Đơn hàng (ACTIVE) -->
+<a class="flex flex-col items-center gap-0.5 text-primary py-1" href="#" onclick="switchView('orders'); return false;">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-sm text-label-sm font-semibold">Đơn hàng</span>
+</a>
+<!-- Tài khoản -->
+<a class="flex flex-col items-center gap-0.5 text-on-surface-variant hover:text-primary transition-colors py-1" href="#" onclick="switchView('profile'); return false;">
+<span class="material-symbols-outlined text-[22px]">account_circle</span>
+<span class="font-label-sm text-label-sm">Tài khoản</span>
+</a>
+</nav>
+</div>
+<script>
+  let targetOrderId = '';
+  let targetOrderElementId = '';
+
+  function switchView(tab) {
+    const ordersSec = document.getElementById('section-orders');
+    const profileSec = document.getElementById('section-profile');
+    const btnOrders = document.getElementById('tab-btn-orders');
+    const btnProfile = document.getElementById('tab-btn-profile');
+
+    if (tab === 'orders') {
+      ordersSec.classList.remove('hidden');
+      profileSec.classList.add('hidden');
+      btnOrders.className = "flex-1 py-space-xs px-space-sm rounded-lg font-title-sm text-title-sm text-on-primary bg-primary shadow-sm flex items-center justify-center gap-1.5 transition-all";
+      btnProfile.className = "flex-1 py-space-xs px-space-sm rounded-lg font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface bg-transparent flex items-center justify-center gap-1.5 transition-all";
+    } else {
+      ordersSec.classList.add('hidden');
+      profileSec.classList.remove('hidden');
+      btnProfile.className = "flex-1 py-space-xs px-space-sm rounded-lg font-title-sm text-title-sm text-on-primary bg-primary shadow-sm flex items-center justify-center gap-1.5 transition-all";
+      btnOrders.className = "flex-1 py-space-xs px-space-sm rounded-lg font-title-sm text-title-sm text-on-surface-variant hover:text-on-surface bg-transparent flex items-center justify-center gap-1.5 transition-all";
+    }
+  }
+
+  function filterChips(btn, status) {
+    // update active chip UI
+    document.querySelectorAll('.chip-filter').forEach(c => {
+      c.className = "chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm transition-colors";
+    });
+    btn.className = "chip-filter px-space-md py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-primary text-on-primary shadow-sm transition-colors";
+
+    const cards = document.querySelectorAll('.order-item');
+    let visibleCount = 0;
+    cards.forEach(card => {
+      if (status === 'all' || card.getAttribute('data-status') === status) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    const emptyState = document.getElementById('orders-empty-state');
+    if (visibleCount === 0) {
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+    } else {
+      emptyState.classList.add('hidden');
+      emptyState.classList.remove('flex');
+    }
+  }
+
+  function openDeleteDialog(orderId, elementId) {
+    targetOrderId = orderId;
+    targetOrderElementId = elementId;
+    document.getElementById('dialog-order-id').innerText = orderId;
+    document.getElementById('modal-delete-order').classList.remove('hidden');
+  }
+
+  function closeDeleteDialog() {
+    document.getElementById('modal-delete-order').classList.add('hidden');
+  }
+
+  function confirmDeleteOrder() {
+    closeDeleteDialog();
+    if (targetOrderElementId) {
+      const el = document.getElementById(targetOrderElementId);
+      if (el) {
+        el.remove();
+        showToast('Đã xóa đơn hàng ' + targetOrderId + ' khỏi lưu trữ');
+      }
+    }
+    const remainingCards = document.querySelectorAll('.order-item');
+    if (remainingCards.length === 0) {
+      const emptyState = document.getElementById('orders-empty-state');
+      emptyState.classList.remove('hidden');
+      emptyState.classList.add('flex');
+    }
+  }
+
+  function openDeleteAccountDialog() {
+    document.getElementById('modal-delete-account').classList.remove('hidden');
+  }
+
+  function closeDeleteAccountDialog() {
+    document.getElementById('modal-delete-account').classList.add('hidden');
+  }
+
+  function confirmDeleteAccount() {
+    closeDeleteAccountDialog();
+    showToast('Tài khoản của bạn đã được đánh dấu xóa.');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('app-toast');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.innerText = msg;
+    toast.classList.remove('opacity-0', 'pointer-events-none');
+    toast.classList.add('opacity-100');
+    setTimeout(() => {
+      toast.classList.remove('opacity-100');
+      toast.classList.add('opacity-0', 'pointer-events-none');
+    }, 2800);
+  }
+</script></main><aside class="fixed bottom-6 right-6 z-40"><button class="flex items-center gap-space-xs px-space-md py-3 rounded-full bg-secondary text-on-secondary shadow-[0_10px_25px_-5px_rgba(0,106,99,0.35)] hover:bg-primary transition-all" type="button"><span class="material-symbols-outlined text-[20px]">chat</span><span class="font-title-sm text-title-sm hidden sm:inline">Hỗ trợ 24/7</span></button></aside><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] mt-space-2xl"><div class="max-w-[1320px] mx-auto px-margin py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl"><div class="lg:col-span-2"><div class="flex items-center gap-space-sm mb-space-md"><img alt="BOOKSTORE123 Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw5tPQ6BZGGgANNm_y-i9QeseQ3tQABi4zzE5C3XNV0-Jg-qSNfEpx2JK1NGJQFe3E6CZoXEap3ebt3qYrYmfprDwKcQV5Z8jgQ2fs6ktJeF4z20nrwgZv_K7lgdB0ow71L0t1chmNdEmQKslXagxyj35gHobBkmKSZJwX4D6hDmq6nx1OuUvPlxWMjvuLpfqgKOtAvLvkvcRFVtb4OBQCrPqa2bcJIxea8l66REq7ie4JiEEoqA"/><span class="font-headline-sm text-headline-sm text-primary">BOOKSTORE123</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-space-md">Không gian trực tuyến tinh tuyển dành cho người yêu sách tại Việt Nam. Trân trọng tri thức nhân loại, đồng hành cùng văn hóa đọc bền vững.</p><div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[18px] text-primary">pin_drop</span><span>123 Phố Sách, Phường Hàng Bài, Quận Hoàn Kiếm, Hà Nội</span></div><div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm mt-space-xs"><span class="material-symbols-outlined text-[18px] text-primary">call</span><span>Hotline: 1900 8123 (8:00 - 21:00)</span></div></div><div><h4 class="font-title-md text-title-md text-on-surface mb-space-md">Danh mục tuyển chọn</h4><ul class="flex flex-col gap-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="danh-muc-van-hoc" href="#">Văn học kinh điển</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="danh-muc-kinh-te" href="#">Kinh tế &amp; Đầu tư</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="danh-muc-tam-ly" href="#">Tâm lý - Kỹ năng</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="danh-muc-lich-su" href="#">Triết học &amp; Lịch sử</a></li></ul></div><div><h4 class="font-title-md text-title-md text-on-surface mb-space-md">Dịch vụ khách hàng</h4><ul class="flex flex-col gap-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="chinh-sach-giao-hang" href="#">Chính sách vận chuyển</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="doi-tra-hoan-tien" href="#">Đổi trả trong 7 ngày</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="huong-dan-mua-hang" href="#">Hướng dẫn đặt hàng</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors"><a data-path="lien-he-hop-tac" href="#">Liên hệ nhà xuất bản</a></li></ul></div><div><h4 class="font-title-md text-title-md text-on-surface mb-space-md">Đăng ký nhận tuyển tập</h4><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">Nhận bản tin điểm sách hay và ưu đãi độc quyền mỗi tuần.</p><form class="flex flex-col gap-space-xs"><input class="h-10 px-space-md rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Địa chỉ email của bạn" type="email"/><button class="h-10 bg-primary text-on-primary rounded-lg font-title-sm text-title-sm hover:bg-primary-container transition-colors" type="button">Đăng ký</button></form></div></div><div class="mt-space-2xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant"><p>© 2024 BOOKSTORE123 Việt Nam. Toàn bộ bản quyền được bảo hộ.</p><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="dieu-khoan-su-dung" href="#">Điều khoản dịch vụ</a><a class="hover:text-on-surface transition-colors" data-path="chinh-sach-bao-mat" href="#">Chính sách bảo mật</a><a class="hover:text-on-surface transition-colors" data-path="chung-chi-isbn" href="#">Chuẩn mã số ISBN</a></div></div></div></footer></body></html>

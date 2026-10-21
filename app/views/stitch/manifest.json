@@ -1,0 +1,162 @@
+{
+  "home": {
+    "folder": "trang_ch_bookstore123",
+    "functions": [
+      "filterCategory",
+      "openBookModal",
+      "addToCart",
+      "closeBookModal",
+      "adjustModalQty",
+      "toggleChat"
+    ]
+  },
+  "catalog": {
+    "folder": "danh_m_c_t_m_ki_m_s_ch_bookstore123",
+    "functions": []
+  },
+  "detail": {
+    "folder": "chi_ti_t_s_ch_bookstore123",
+    "functions": [
+      "getElementById",
+      "remove",
+      "switchTab",
+      "add"
+    ]
+  },
+  "login": {
+    "folder": "ng_nh_p_t_i_kho_n_c_gi_bookstore123",
+    "functions": [
+      "preventDefault",
+      "handleReaderLogin",
+      "togglePasswordVisibility"
+    ]
+  },
+  "register": {
+    "folder": "ng_k_t_i_kho_n_c_gi_bookstore123",
+    "functions": [
+      "preventDefault"
+    ]
+  },
+  "auth": {
+    "folder": "ng_nh_p_ng_k_bookstore123",
+    "functions": [
+      "switchAuthTab",
+      "dismissLoginError",
+      "handleLoginSubmit",
+      "togglePasswordVisibility",
+      "handleRegisterSubmit",
+      "evaluatePasswordStrength"
+    ]
+  },
+  "cart": {
+    "folder": "gi_h_ng_t_h_ng_bookstore123",
+    "functions": [
+      "preventDefault",
+      "alert"
+    ]
+  },
+  "account": {
+    "folder": "h_s_n_h_ng_c_a_t_i_bookstore123",
+    "functions": [
+      "switchAccountTab",
+      "preventDefault",
+      "showToast",
+      "handlePasswordChange",
+      "openOrderDetailModal",
+      "confirmDeleteOrder",
+      "closeDeleteOrderModal",
+      "closeOrderDetailModal"
+    ]
+  },
+  "accountMobile": {
+    "folder": "n_h_ng_t_i_kho_n_mobile_bookstore123",
+    "functions": [
+      "switchView",
+      "filterChips",
+      "openDeleteDialog",
+      "preventDefault",
+      "showToast",
+      "closeDeleteDialog",
+      "confirmDeleteOrder"
+    ]
+  },
+  "catalogMobile": {
+    "folder": "danh_m_c_chat_h_tr_mobile_bookstore123",
+    "functions": [
+      "triggerEmptyState",
+      "openChatDrawer",
+      "sendQuickMessage",
+      "handleSendChat"
+    ]
+  },
+  "books": {
+    "folder": "qu_n_tr_s_ch_bookstore123",
+    "functions": []
+  },
+  "editor": {
+    "folder": "th_m_s_a_chi_ti_t_s_ch_admin_bookstore123",
+    "functions": []
+  },
+  "categories": {
+    "folder": "qu_n_tr_th_lo_i_t_n_kho_bookstore123",
+    "functions": [
+      "showNotification",
+      "openAddCategoryModal",
+      "editCategory",
+      "deleteCategory",
+      "filterInventory",
+      "openStockModal",
+      "closeCategoryModal",
+      "handleCategorySubmit",
+      "closeStockModal",
+      "handleStockSubmit"
+    ]
+  },
+  "customers": {
+    "folder": "qu_n_l_kh_ch_h_ng_h_i_vi_n_bookstore123",
+    "functions": [
+      "resetCustomerSearch",
+      "openCreateCustomerModal",
+      "openEditCustomerModal",
+      "openDeleteCustomerModal",
+      "closeCreateCustomerModal",
+      "handleCreateCustomerSubmit",
+      "checkUsernameAvailability",
+      "validatePasswordMatch",
+      "closeEditCustomerModal",
+      "handleEditCustomerSubmit",
+      "closeDeleteCustomerModal",
+      "confirmCustomerDeletion"
+    ]
+  },
+  "orders": {
+    "folder": "qu_n_tr_n_h_ng_kh_ch_h_ng_bookstore123",
+    "functions": [
+      "switchMainTab",
+      "applyOrderFilters",
+      "setStatusFilter",
+      "resetOrderFilters",
+      "closeOrderDetail",
+      "saveOrderStatusFromDetail",
+      "filterCustomers",
+      "openCustomerModal",
+      "closeCustomerModal",
+      "handleCustomerSubmit",
+      "togglePasswordVisibility",
+      "closeConfirmModal"
+    ]
+  },
+  "orderDetail": {
+    "folder": "chi_ti_t_x_l_n_h_ng_admin_bookstore123",
+    "functions": [
+      "print"
+    ]
+  },
+  "chat": {
+    "folder": "chat_h_tr_kh_ch_h_ng_bookstore123",
+    "functions": [
+      "useQuickReply",
+      "sendMessage"
+    ]
+  }
+}

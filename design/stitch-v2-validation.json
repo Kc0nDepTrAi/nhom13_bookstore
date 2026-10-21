@@ -1,0 +1,236 @@
+{
+  "pages": [
+    {
+      "role": "guest",
+      "url": "/",
+      "status": 200,
+      "title": "Nơi tri thức khai phóng & tâm hồn lắng đọng",
+      "ready": "true",
+      "cards": 14,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "guest",
+      "url": "/?search=",
+      "status": 200,
+      "title": "Danh mục & Tìm kiếm",
+      "ready": "true",
+      "cards": 14,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "guest",
+      "url": "/?book_id=1",
+      "status": 200,
+      "title": "Ngụ Ngôn La Fontaine",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "guest",
+      "url": "/login",
+      "status": 200,
+      "title": "Đăng Nhập Tài Khoản",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "guest",
+      "url": "/register",
+      "status": 200,
+      "title": "Tạo Tài Khoản Độc Giả Mới",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "guest",
+      "url": "/cart",
+      "status": 200,
+      "title": "Giỏ Hàng Của Bạn",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "user",
+      "url": "/profile",
+      "status": 200,
+      "title": "Không gian Tài khoản & Quản lý",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "user",
+      "url": "/my-orders",
+      "status": 200,
+      "title": "Không gian Tài khoản & Quản lý",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "user",
+      "url": "/public/chat.php",
+      "status": 200,
+      "title": "Văn học kinh điển",
+      "ready": "true",
+      "cards": 14,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin",
+      "status": 200,
+      "title": "Quản Lý Danh Mục & Kho Sách",
+      "ready": "true",
+      "cards": 0,
+      "rows": 14,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin/categories",
+      "status": 200,
+      "title": "Quản Lý Thể Loại Tuyển Chọn",
+      "ready": "true",
+      "cards": 0,
+      "rows": 17,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin/customers",
+      "status": 200,
+      "title": "Quản Lý Khách Hàng & Độc Giả",
+      "ready": "true",
+      "cards": 0,
+      "rows": 9,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin/orders",
+      "status": 200,
+      "title": "Quản Trị Đơn Hàng & Khách Hàng",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin/add_book.php",
+      "status": 200,
+      "title": "Quản Trị Ấn Bản & Hồ Sơ Tác Phẩm",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin/book_detail.php?id=1",
+      "status": 200,
+      "title": "Quản Trị Ấn Bản & Hồ Sơ Tác Phẩm",
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "role": "admin",
+      "url": "/admin/admin_chat.php",
+      "status": 200,
+      "ready": "true",
+      "cards": 0,
+      "rows": 0,
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "interaction_checks": {
+    "passed": [
+      "Trang chủ hiển thị đúng 14 sách",
+      "Hộp xem nhanh mở/đóng, dữ liệu thật",
+      "Tìm kiếm trả đúng số sách",
+      "Lọc tồn kho và đặt lại đúng dữ liệu",
+      "Sửa sách gửi đúng một PUT, chặn ghi DB",
+      "Biểu mẫu thể loại gửi đúng tên, chặn ghi DB",
+      "Biểu mẫu khách hàng gửi đúng PUT, chặn ghi DB",
+      "Chi tiết và cập nhật trạng thái đơn với dữ liệu kiểm thử, chặn ghi DB",
+      "Mẫu chi tiết đơn riêng hiển thị dữ liệu kiểm thử",
+      "Mobile 390px không tràn: /",
+      "Mobile 390px không tràn: /?search=",
+      "Mobile 390px không tràn: /profile",
+      "Mobile 390px không tràn: /my-orders",
+      "Mobile 390px không tràn: /cart",
+      "Mobile 390px không tràn: /public/chat.php"
+    ],
+    "errors": []
+  },
+  "auth_cart_checks": {
+    "passed": [
+      "Thêm sách, tăng số lượng, xóa giỏ trong phiên riêng; không tạo đơn",
+      "Đăng nhập sai hiển thị phản hồi backend",
+      "Đăng ký gửi đủ trường của API cũ; chặn tạo tài khoản"
+    ],
+    "errors": []
+  },
+  "backend_preservation": {
+    "backend_files_compared": 34,
+    "backend_files_changed": [],
+    "legacy_processing_prefix_changes": [],
+    "php_syntax_errors": []
+  },
+  "restored_features": {
+    "passed": [
+      "Autocomplete lấy gợi ý thật và chọn bằng bàn phím",
+      "Popup trang chủ gửi/nhận, tự cập nhật và badge chưa đọc",
+      "Nhập số lượng trực tiếp cập nhật giỏ thật trong phiên thử",
+      "Số lượng vượt kho bị từ chối và giao diện nạp lại số lượng hợp lệ",
+      "Checkout khóa nút, chặn gửi lặp và mở lại khi backend báo lỗi",
+      "Nút xóa toàn bộ giỏ gọi API cũ và cập nhật tổng/badge",
+      "Admin nhận tin tự động, trả lời và cập nhật chưa đọc"
+    ],
+    "errors": []
+  },
+  "restored_mobile": {
+    "passed": [
+      "Mobile không tràn /",
+      "Mobile không tràn /?search=",
+      "Mobile không tràn /cart",
+      "Mobile không tràn /profile",
+      "Mobile không tràn /public/chat.php",
+      "Chat mobile gửi đúng một yêu cầu"
+    ],
+    "errors": []
+  }
+}

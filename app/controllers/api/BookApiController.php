@@ -50,12 +50,54 @@ class BookApiController extends Controller
         $this->success($book);
     }
 
+    // GET /api/books/{id}/reviews
+    public function reviews(string $id): void
+    {
+        if (!ctype_digit($id) || (int) $id < 1 || !$this->bookModel->exists((int) $id)) {
+            $this->notFound('Không tìm thấy sách.');
+            return;
+        }
+        $this->success($this->bookModel->getReviewState((int) $id, (string) ($_SESSION['username'] ?? '')));
+    }
+
+    // POST /api/books/{id}/reviews (CSRF is enforced by the existing API bootstrap).
+    public function storeReview(string $id): void
+    {
+        $this->requireAuth();
+        if ($this->isAdmin()) {
+            $this->error('Chỉ khách hàng đã mua sách mới có thể đánh giá.', 403);
+            return;
+        }
+        if (!ctype_digit($id) || (int) $id < 1 || !$this->bookModel->exists((int) $id)) {
+            $this->notFound('Không tìm thấy sách.');
+            return;
+        }
+        $rawRating = $this->request->input('rating');
+        // Reject JSON booleans, arrays, fractions and strings containing non-digits.
+        if ((!is_int($rawRating) && !is_string($rawRating)) || !preg_match('/^[1-5]$/D', (string) $rawRating)) {
+            $this->error('Vui lòng chọn số sao nguyên từ 1 đến 5.');
+            return;
+        }
+        $comment = $this->request->input('comment', '');
+        if (!is_string($comment) || mb_strlen($comment, 'UTF-8') > 2000) {
+            $this->error('Nội dung đánh giá phải là văn bản tối đa 2.000 ký tự.');
+            return;
+        }
+        $username = (string) $_SESSION['username'];
+        if (!$this->bookModel->saveReview((int) $id, $username, (int) $rawRating, trim($comment))) {
+            $this->error('Bạn cần có đơn hàng đã hoàn thành chứa sách này để đánh giá.', 403);
+            return;
+        }
+        $this->success($this->bookModel->getReviewState((int) $id, $username), 'Đã lưu đánh giá của bạn.');
+    }
+
     // POST /api/books
     public function store(): void
     {
         $this->requireAdmin();
 
         $data     = $this->request->allInput();
+        try { bookstore_validate_book($data); } catch (\InvalidArgumentException $e) { $this->error($e->getMessage()); return; }
         $required = ['title', 'author', 'price', 'category_id'];
         foreach ($required as $f) {
             if (empty($data[$f])) {
@@ -86,6 +128,7 @@ class BookApiController extends Controller
         }
 
         $data       = $this->request->allInput();
+        try { bookstore_validate_book($data); } catch (\InvalidArgumentException $e) { $this->error($e->getMessage()); return; }
         $updateData = [];
 
         $fields = ['title', 'author', 'description', 'image'];

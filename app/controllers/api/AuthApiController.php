@@ -34,13 +34,14 @@ class AuthApiController extends Controller
             return;
         }
 
-        $user = $this->userModel->verifyLogin($username, $password);
+        try { $user = $this->userModel->verifyLogin($username, $password); } catch (\RuntimeException $e) { bookstore_reject($e->getMessage(),429); }
         if (!$user) {
             $this->error('Sai tài khoản hoặc mật khẩu', 401);
             return;
         }
 
         // Lưu session
+        session_regenerate_id(true);
         $_SESSION['username'] = $user['username'];
         $_SESSION['user_id']  = $user['id'];
         $_SESSION['role']     = $user['role'];

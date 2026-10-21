@@ -1,6 +1,9 @@
 RewriteEngine On
 RewriteBase /bookstore/
 
+# Route dashboard even though the legacy admin directory exists.
+RewriteRule ^admin/?$ index.php [QSA,L]
+
 # ── Không rewrite các file/thư mục thực có trên ổ đĩa ──
 # (images, CSS, JS, PHP files cũ vẫn dùng trực tiếp nếu cần)
 RewriteCond %{REQUEST_FILENAME} -f [OR]

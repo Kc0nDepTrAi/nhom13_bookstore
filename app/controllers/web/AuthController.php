@@ -46,12 +46,13 @@ class AuthController extends Controller
             return;
         }
 
-        $user = $this->userModel->verifyLogin($username, $password);
+        try { $user = $this->userModel->verifyLogin($username, $password); } catch (\RuntimeException $e) { bookstore_reject($e->getMessage(),429); }
         if (!$user) {
             $this->redirectWithError(BASE_URL . '/login', 'Sai tài khoản hoặc mật khẩu');
             return;
         }
 
+        session_regenerate_id(true);
         $_SESSION['username'] = $user['username'];
         $_SESSION['user_id']  = $user['id'];
         $_SESSION['role']     = $user['role'];

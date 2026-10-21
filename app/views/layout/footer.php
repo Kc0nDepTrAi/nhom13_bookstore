@@ -1,6 +1,6 @@
 
 <?php if (isset($_SESSION['username'])): ?>
-<a href="<?= BASE_URL ?>/chat.php" class="chat-float" id="chatFloat">
+<a href="<?= BASE_URL ?>/public/chat.php" class="chat-float" id="chatFloat">
     💬
     <span class="chat-badge" id="chatBadge"></span>
 </a>

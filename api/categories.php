@@ -1,4 +1,6 @@
 <?php
+if (realpath($_SERVER['SCRIPT_FILENAME']??'')===__FILE__ && PHP_SAPI!=='cli') {http_response_code(410);header('Content-Type: application/json');echo json_encode(['success'=>false,'message'=>'Sử dụng REST API hiện tại.']);exit;}
+
 // api/categories.php — CRUD thể loại
 // Bảng: categories (id, name)
 

@@ -81,8 +81,25 @@ class OrderModel extends Model
      * - Trừ kho
      * @throws \Exception nếu validation thất bại
      */
-    public function createWithItems(string $username, array $items): array
+    public function createWithItems(string $username, array $items, array $checkout = []): array
     {
+        $notes = $checkout['notes'] ?? '';
+        $paymentMethod = $checkout['payment_method'] ?? 'cash';
+        if (!is_string($notes) || !is_string($paymentMethod)) throw new \InvalidArgumentException('Ghi chú hoặc phương thức thanh toán không hợp lệ.');
+        $notes = trim($notes);
+        if (mb_strlen($notes, 'UTF-8') > 2000) throw new \InvalidArgumentException('Ghi chú tối đa 2000 ký tự.');
+        if (!in_array($paymentMethod, ['cash', 'qr'], true)) throw new \InvalidArgumentException('Phương thức thanh toán không hợp lệ.');
+        $combined=[];
+        foreach ($items as $item) {
+            if (!is_array($item) || filter_var($item['book_id']??null,FILTER_VALIDATE_INT)===false || filter_var($item['quantity']??null,FILTER_VALIDATE_INT)===false || (int)$item['book_id']<1 || (int)$item['quantity']<1) throw new \InvalidArgumentException('Số lượng và mã sách phải là số nguyên dương.');
+            $combined[(int)$item['book_id']]=($combined[(int)$item['book_id']]??0)+(int)$item['quantity'];
+        }
+        if (!$combined) throw new \InvalidArgumentException('Đơn hàng cần có sách.');
+        ksort($combined);
+        $fingerprint=hash('sha256',$username.json_encode([$combined,$notes,$paymentMethod], JSON_UNESCAPED_UNICODE));
+        $previous=$_SESSION['recent_order']??null;
+        if ($previous && $previous['key']===$fingerprint && $previous['time']>time()-5 && $this->exists($previous['result']['order_id'])) return $previous['result'];
+        $items=[];foreach ($combined as $id=>$qty) $items[]=['book_id'=>$id,'quantity'=>$qty];
         $bookModel = new BookModel();
         $total     = 0;
         $validated = [];
@@ -118,6 +135,8 @@ class OrderModel extends Model
                 'username'    => $username,
                 'total_price' => $total,
                 'status'      => 'Đang xử lý',
+                'notes'       => $notes,
+                'payment_method' => $paymentMethod,
                 'created_at'  => date('Y-m-d H:i:s'),
             ]);
 
@@ -133,36 +152,53 @@ class OrderModel extends Model
             }
 
             $this->db->commit();
-            return ['order_id' => $orderId, 'total_price' => $total];
+            $result=['order_id' => $orderId, 'total_price' => $total, 'notes' => $notes, 'payment_method' => $paymentMethod];
+            $_SESSION['recent_order']=['key'=>$fingerprint,'time'=>time(),'result'=>$result];
+            return $result;
         } catch (\Exception $e) {
             $this->db->rollBack();
             throw $e;
         }
     }
 
-    /** Cập nhật trạng thái đơn hàng */
-    public function updateStatus(int $id, string $status): bool
-    {
-        if (!in_array($status, self::VALID_STATUSES, true)) {
-            throw new \InvalidArgumentException(
-                "Trạng thái không hợp lệ. Hợp lệ: " . implode(', ', self::VALID_STATUSES)
-            );
-        }
-        return $this->update($id, ['status' => $status]);
+    /** Transactional status changes and stock restoration. */
+    private function lockedOrder(int $id): array {
+        $stmt=$this->db->prepare('SELECT * FROM orders WHERE id=? FOR UPDATE');$stmt->execute([$id]);
+        $order=$stmt->fetch();if (!$order) throw new \RuntimeException('Không tìm thấy đơn hàng.');return $order;
     }
-
-    /** Xóa đơn hàng và tất cả chi tiết */
-    public function deleteWithDetails(int $id): bool
-    {
+    private function restoreStock(int $id): void {
+        $stmt=$this->db->prepare('SELECT book_id, SUM(quantity) AS quantity FROM order_details WHERE order_id=? GROUP BY book_id ORDER BY book_id');$stmt->execute([$id]);
+        foreach ($stmt->fetchAll() as $item) {
+            $this->db->prepare('UPDATE books SET quantity=quantity+?, sold=GREATEST(0,sold-?) WHERE id=?')->execute([$item['quantity'],$item['quantity'],$item['book_id']]);
+        }
+    }
+    public function updateStatus(int $id, string $status): bool {
+        if (!in_array($status,self::VALID_STATUSES,true)) throw new \InvalidArgumentException('Trạng thái không hợp lệ.');
         $this->db->beginTransaction();
         try {
-            $this->db->prepare("DELETE FROM `order_details` WHERE `order_id` = ?")->execute([$id]);
-            $this->delete($id);
-            $this->db->commit();
-            return true;
-        } catch (\Exception $e) {
-            $this->db->rollBack();
-            throw $e;
-        }
+            $o=$this->lockedOrder($id);$old=$o['status'];
+            if ($old!==$status && $status==='Đã hủy') $this->restoreStock($id);
+            if ($old==='Đã hủy' && $status!==$old) {
+                $items=$this->db->prepare('SELECT book_id, SUM(quantity) AS quantity FROM order_details WHERE order_id=? GROUP BY book_id ORDER BY book_id');
+                $items->execute([$id]);$bookModel=new BookModel();
+                foreach ($items->fetchAll() as $item) {
+                    if (!$bookModel->decreaseStock((int)$item['book_id'],(int)$item['quantity'])) {
+                        throw new \InvalidArgumentException('Không đủ tồn kho để mở lại đơn hàng. Vui lòng kiểm tra sách #'.$item['book_id'].'.');
+                    }
+                }
+            }
+            $this->update($id,['status'=>$status]);$this->db->commit();return true;
+        } catch (\Throwable $e) {$this->db->rollBack();throw $e;}
+    }
+    public function deleteWithDetails(int $id, ?string $owner=null): bool {
+        $this->db->beginTransaction();
+        try {
+            $o=$this->lockedOrder($id);
+            if ($owner!==null && $o['username']!==$owner) throw new \RuntimeException('Bạn không có quyền xóa đơn này.');
+            if ($owner!==null && !in_array($o['status'],['Đang xử lý','Chờ xử lý','Đã hủy'],true)) throw new \RuntimeException('Không thể xóa đơn đang giao hoặc đã hoàn thành.');
+            if (!in_array($o['status'],['Đã hủy','Đã hoàn thành'],true)) $this->restoreStock($id);
+            $this->db->prepare('DELETE FROM order_details WHERE order_id=?')->execute([$id]);$this->delete($id);
+            $this->db->commit();return true;
+        } catch (\Throwable $e) {$this->db->rollBack();throw $e;}
     }
 }

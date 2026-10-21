@@ -1,0 +1,197 @@
+/* Only integration states; visual tokens and layout come from the Stitch HTML. */
+[data-stitch-unavailable]{cursor:help}
+.stitch-status{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;background:#00685f;color:#fff;padding:12px 20px;border-radius:8px;max-width:90vw;font:14px 'Be Vietnam Pro',sans-serif;box-shadow:0 4px 16px #0002}
+img[data-live-image]{object-fit:cover}
+table{max-width:100%}
+@media(max-width:640px){main{min-width:0}table{display:block;overflow-x:auto}header form{min-width:0}}
+
+main,[class*="col-span"],.grid>*,.flex-1{min-width:0} main:has(#bookGrid){max-width:100%} [class*="min-w-max"]{max-width:100%;overflow-x:auto} main>.flex{overflow-x:clip}
+
+.stitch-suggestions{position:absolute;top:100%;left:0;right:0;z-index:80;max-height:260px;overflow:auto;background:#fff;border:1px solid #bcc9c6;border-radius:8px;box-shadow:0 8px 24px #0b1c3020}
+.stitch-suggestions button{display:block;width:100%;padding:10px 12px;text-align:left;font:14px 'Be Vietnam Pro',sans-serif;color:#0b1c30}
+.stitch-suggestions button:hover,.stitch-suggestions [aria-selected=true]{background:#eff4ff;color:#00685f}
+.stitch-unread{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;margin-left:6px;background:#ba1a1a;color:#fff;border-radius:999px;font:600 11px 'Be Vietnam Pro',sans-serif}
+.stitch-unread[hidden],.stitch-suggestions[hidden]{display:none}
+.stitch-quantity{width:3.2rem;background:transparent;text-align:center;appearance:textfield}
+.stitch-quantity::-webkit-inner-spin-button,.stitch-quantity::-webkit-outer-spin-button{appearance:none;margin:0}
+button:disabled{cursor:not-allowed;opacity:.6}
+button[aria-busy=true]{cursor:wait}
+
+/* Compact spacing for the header book category dropdown. */
+header div:has(> a[data-path="danh-muc-van-hoc"]) {
+  padding: 4px;
+}
+header div:has(> a[data-path="danh-muc-van-hoc"]) > a {
+  padding: 6px 12px;
+  margin: 0;
+  line-height: 20px;
+  min-height: 0;
+}
+
+/* Fit the login panel at normal browser zoom without clipping the form. */
+.stitch-login main { min-height: 100dvh; padding-top: 80px; }
+.stitch-login main > div { padding-top: 16px; padding-bottom: 16px; }
+.stitch-login .stitch-login-panel { min-height: 0; max-width: 1120px; margin-inline: auto; }
+.stitch-login .stitch-login-art, .stitch-login .stitch-login-content { padding: 24px; }
+.stitch-login .stitch-login-content > div { gap: 20px; }
+.stitch-login #reader-login-form { gap: 16px; }
+.stitch-login h1 { font-size: 32px; line-height: 38px; }
+.stitch-login .stitch-login-art > .relative { gap: 16px; }
+.stitch-login .stitch-login-art .h-52 { height: 160px; }
+@media (min-width: 1024px) {
+  .stitch-login main > div > div.max-w-\[1320px\] { max-width: 1184px; }
+  .stitch-login main > div > div > div:first-child { margin-bottom: 12px; }
+}
+@media (max-width: 1023px) {
+  .stitch-login .stitch-login-art { display: none; }
+  .stitch-login .stitch-login-panel { max-width: 620px; }
+}
+@media (max-width: 640px) {
+  .stitch-login main > div > div { padding-inline: 16px; }
+  .stitch-login .stitch-login-content { padding: 20px 16px; }
+  .stitch-login h1 { font-size: 28px; line-height: 34px; }
+}
+
+.stitch-login main { margin-top: 0; }
+.stitch-login main > div { margin-top: 0; }
+
+.stitch-login main > div > .relative { padding-top: 0; padding-bottom: 0; }
+
+.stitch-form-status { margin-top: 12px; font-size: 14px; line-height: 22px; color: #3d4947; }
+.stitch-form-status[data-success="false"] { color: #ba1a1a; }
+.stitch-form-status[data-success="true"] { color: #00685f; }
+.stitch-orders-empty { padding: 24px 16px; text-align: center; color: #3d4947; }
+#detail-order-modal > div { max-height: calc(100dvh - 32px); overflow-y: auto; }
+
+.stitch-back-button { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 36px; width: 36px; height: 36px; padding: 0; border: 1px solid #bcc9c6; border-radius: 8px; color: #00685f; background: #fff; cursor: pointer; transition: background .15s, border-color .15s; }
+.stitch-back-button:hover { background: #eff4ff; border-color: #00685f; }
+.stitch-back-button:focus-visible { outline: 2px solid #00685f; outline-offset: 3px; }
+header:has(.stitch-back-button) > div { gap: 12px; }
+@media (max-width: 1599px) { .stitch-login header nav { display: none; } }
+@media (max-width: 640px) { header:has(.stitch-back-button) > div { padding-inline: 12px; gap: 8px; } }
+
+.stitch-category-select { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; font-size: 14px; font-weight: 600; }
+.stitch-category-select select, .stitch-order-input { display: block; width: 100%; height: 42px; margin-top: 6px; padding: 8px 12px; border: 1px solid #bcc9c6; border-radius: 8px; background: #eff4ff; color: #0b1c30; font-size: 14px; font-weight: 400; }
+.stitch-order-input:focus { outline: 2px solid #00685f; outline-offset: 1px; }
+.stitch-drop-active { outline: 2px dashed #00685f; outline-offset: -4px; background: #e5eeff; }
+.stitch-create-order-panel { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.stitch-order-line { display: grid; grid-template-columns: minmax(0,1fr) 88px 44px; align-items: center; gap: 8px; }
+@media (max-width: 640px) { .stitch-order-line { grid-template-columns: minmax(0,1fr) 64px 36px; } }
+
+/* Consistent navigation across existing admin templates. */
+body.stitch-admin { padding-left: 248px; }
+.stitch-admin header { left: 0; width: 100%; }
+.stitch-admin header > div { height: 80px; }
+.stitch-admin > main, .stitch-admin .stitch-admin-content-shell > main { padding-top: 80px; }
+.stitch-admin-old-sidebar { display: none !important; }
+.stitch-admin-content-grid { grid-template-columns: minmax(0, 1fr) !important; }
+.stitch-admin-content-grid > .stitch-admin-content { grid-column: 1 / -1 !important; }
+.stitch-admin .stitch-admin-content-shell { padding-left: 0 !important; width: 100%; min-width: 0; }
+.stitch-admin main { max-width: 100%; }
+.stitch-admin-sidebar { position: fixed; top: 80px; left: 0; bottom: 0; width: 248px; z-index: 45; overflow-y: auto; overscroll-behavior: contain; background: #fff; border-right: 1px solid #dce9ff; padding: 24px 16px; }
+.stitch-admin-sidebar-heading { padding: 0 12px 18px; font-size: 15px; font-weight: 600; color: #00685f; }
+.stitch-admin-navigation { display: flex; flex-direction: column; gap: 6px; }
+.stitch-admin-navigation a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 12px; border-radius: 8px; color: #3d4947; font-size: 14px; text-decoration: none; }
+.stitch-admin-navigation a:hover { background: #eff4ff; color: #00685f; }
+.stitch-admin-navigation a[aria-current="page"] { background: #00685f; color: #fff; font-weight: 600; }
+.stitch-admin-navigation a:focus-visible, .stitch-admin-menu-toggle:focus-visible { outline: 2px solid #00685f; outline-offset: 3px; }
+.stitch-admin-navigation .material-symbols-outlined { font-size: 21px; }
+.stitch-admin-navigation .stitch-admin-navigation-separator { margin-top: 18px; border-top: 1px solid #dce9ff; border-radius: 0; }
+.stitch-admin-navigation a[data-admin-page="logout"] { color: #ba1a1a; }
+.stitch-admin-menu-toggle, .stitch-admin-overlay { display: none; }
+@media (max-width: 1023px) {
+ body.stitch-admin { padding-left: 0; }
+ .stitch-admin-sidebar { transform: translateX(-100%); transition: transform .18s ease; z-index: 70; top: 0; padding-top: 24px; }
+ .stitch-admin-menu-open .stitch-admin-sidebar { transform: translateX(0); }
+ .stitch-admin-menu-toggle { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 36px; width: 36px; height: 36px; border: 1px solid #bcc9c6; border-radius: 8px; background: #fff; color: #00685f; }
+ .stitch-admin-menu-open { overflow: hidden; }
+ .stitch-admin-menu-open .stitch-admin-overlay { display: block; position: fixed; inset: 0; z-index: 60; background: #0b1c3070; }
+ .stitch-admin header > div { padding-inline: 12px; gap: 8px; }
+ .stitch-admin header > div > .flex-1 { min-width: 0; }
+ .stitch-admin main { overflow-x: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .stitch-admin-sidebar { transition: none; } }
+
+.stitch-overview { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.stitch-overview-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.stitch-overview-heading p, .stitch-overview-panel > p, #overview-status { font-size: 13px; line-height: 1.6; color: #3d4947; }
+.stitch-overview-refresh { flex-shrink: 0; padding: 10px 16px; border-radius: 8px; background: #00685f; color: #fff; font-size: 14px; }
+.stitch-overview-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.stitch-overview-panel { background: #fff; padding: 20px; border-radius: 10px; border: 1px solid #e5eeff; min-width: 0; }
+.stitch-overview-panel strong { display: block; color: #00685f; font-size: 24px; line-height: 1.4; margin-top: 10px; overflow-wrap: anywhere; }
+.stitch-overview-panel h2 { margin-bottom: 16px; font-size: 17px; font-weight: 600; }
+.stitch-overview-tables { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.stitch-overview-scroll { overflow-x: auto; }
+.stitch-overview table { display: table; width: 100%; border-collapse: collapse; font-size: 13px; }
+.stitch-overview th, .stitch-overview td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e5eeff; }
+.stitch-overview th { background: #eff4ff; font-weight: 600; white-space: nowrap; }
+.stitch-overview a { color: #00685f; text-decoration: underline; text-underline-offset: 3px; }
+.stitch-overview-panel > p:last-child { margin-top: 12px; }
+#overview-status[data-error="true"] { color: #ba1a1a; }
+@media (max-width: 1200px) { .stitch-overview-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .stitch-overview-tables { grid-template-columns: minmax(0, 1fr); } .stitch-overview-panel { padding: 16px; } }
+@media (max-width: 420px) { .stitch-overview-metrics { grid-template-columns: minmax(0, 1fr); } .stitch-overview-heading { align-items: flex-start; } }
+
+.stitch-overview-charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.stitch-chart-heading { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+.stitch-chart-heading label { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.stitch-chart-heading select { border: 1px solid #bcc9c6; background: #eff4ff; border-radius: 6px; padding: 5px 8px; color: #00685f; }
+.stitch-chart-donut { display: flex; align-items: center; justify-content: center; gap: 16px; min-height: 230px; }
+.stitch-chart-donut > svg { flex: 0 1 200px; width: 45%; max-width: 200px; overflow: visible; }
+.stitch-chart-total { font-size: 30px; font-weight: 600; fill: #00685f; }
+.stitch-chart-caption { font-size: 12px; fill: #3d4947; }
+.stitch-chart-legend { display: flex; flex-direction: column; gap: 14px; margin: 0; padding: 0; list-style: none; flex: 1; min-width: 0; }
+.stitch-chart-legend li { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.stitch-chart-legend li > span:nth-child(2) { flex: 1; overflow-wrap: anywhere; }
+.stitch-chart-dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.stitch-chart-mark:hover, .stitch-chart-mark:focus { opacity: .72; cursor: help; }
+.stitch-chart-row { margin: 16px 0; border-radius: 6px; }
+.stitch-chart-row:focus-visible { outline: 2px solid #00685f; outline-offset: 4px; }
+.stitch-chart-row-label { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 8px; }
+.stitch-chart-row-label span { overflow-wrap: anywhere; }
+.stitch-chart-row-label b { white-space: nowrap; font-weight: 600; }
+.stitch-chart-track { background: #eff4ff; height: 16px; border-radius: 5px; overflow: hidden; }
+.stitch-chart-bar { height: 100%; border-radius: 5px; }
+.stitch-chart-row:hover .stitch-chart-bar { opacity: .75; }
+.stitch-chart-monthly-svg { display: block; width: 100%; min-width: 480px; height: auto; margin-top: 8px; }
+.stitch-chart-empty { color: #6d7a77; font-size: 13px; text-align: center; padding: 24px 8px; }
+@media (max-width: 1100px) { .stitch-overview-charts { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 420px) { .stitch-chart-donut { flex-direction: column; align-items: stretch; } .stitch-chart-donut > svg { flex: none; width: 180px; align-self: center; } }
+
+.stitch-order-status-select { max-width: 170px; min-width: 130px; min-height: 36px; padding: 6px 8px; border: 1px solid #bcc9c6; border-radius: 6px; background: #eff4ff; color: #00685f; font-size: 13px; }
+.stitch-order-status-select:focus-visible { outline: 2px solid #00685f; outline-offset: 2px; }
+.stitch-order-status-select:disabled { opacity: .65; cursor: not-allowed; }
+#order-detail-panel { max-height: calc(100dvh - 112px); overflow-y: auto; }
+
+/* Purchased-book reviews. */
+.stitch-book-rating{display:flex;gap:.25rem;align-items:center;color:#006b61;font-size:.85rem;margin-top:.4rem;line-height:1.5}
+.stitch-review-panel{display:grid;gap:1rem}
+.stitch-review-stars{display:flex;flex-wrap:wrap;gap:.5rem;border:0;padding:0;margin:0}
+.stitch-review-stars legend{margin-bottom:.6rem;font-weight:600}
+.stitch-review-stars label{display:flex;align-items:center;gap:.3rem;border:1px solid #d6e3df;border-radius:.5rem;padding:.6rem;cursor:pointer}
+.stitch-review-stars label:has(input:checked){background:#d9f4ef;border-color:#006b61}
+.stitch-review-stars label:focus-within{outline:2px solid #006b61;outline-offset:2px}
+.stitch-review-stars input{accent-color:#006b61}
+.stitch-rating-distribution{display:grid;grid-template-columns:3rem minmax(0,1fr) 2rem;align-items:center;gap:.7rem;margin:.4rem 0}
+.stitch-rating-distribution progress{width:100%;height:.6rem;accent-color:#006b61}
+#book-review-form[hidden],#review-login[hidden],#review-eligibility[hidden]{display:none}
+#review-status{min-height:1.5em}
+.stitch-order-review-links{display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid #e4e9ef;font-size:.9rem}
+.stitch-order-review-links[hidden]{display:none}
+.stitch-order-review-dialog{width:min(600px,calc(100% - 24px));max-height:85dvh;padding:0;border:0;border-radius:16px;background:#fff;color:#132b28;box-shadow:0 20px 70px #102b2840;overflow:auto}
+.stitch-order-review-dialog::backdrop{background:#102b2866}
+.stitch-order-review-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid #e4e9ef;position:sticky;top:0;background:#fff;z-index:1}
+.stitch-order-review-header h2{margin:0;font-size:20px;font-weight:600}
+.stitch-order-review-close{border:0;background:#eff4ff;border-radius:8px;width:36px;height:36px;font-size:26px;cursor:pointer;flex-shrink:0}
+.stitch-order-review-body{padding:4px 22px 20px}
+.stitch-order-review-book{padding:18px 0;border-bottom:1px solid #e4e9ef;overflow-wrap:anywhere}
+.stitch-order-review-book:last-child{border-bottom:0}
+.stitch-order-review-book h3{font-size:17px;font-weight:600;margin:0 0 8px}
+.stitch-order-review-book p{font-size:14px;line-height:1.5;margin:8px 0}
+.stitch-order-review-book form[hidden]{display:none}
+.stitch-order-review-save{margin-top:14px;padding:10px 16px;border:0;border-radius:8px;background:#006b61;color:#fff;cursor:pointer}
+.stitch-order-review-save:disabled{opacity:.6;cursor:wait}
+.stitch-order-review-status{min-height:1.5em;color:#006b61}
+.stitch-review-comment-label{display:block;margin:16px 0 8px;font-size:14px;font-weight:600}
+.stitch-review-comment{display:block;box-sizing:border-box;width:100%;padding:12px;border:1px solid #cddcd8;border-radius:8px;background:#f7f9ff;color:#132b28;font:inherit;font-size:14px;line-height:1.5;resize:vertical;min-height:100px}
+.stitch-review-comment:focus{outline:2px solid #006b61;outline-offset:1px}

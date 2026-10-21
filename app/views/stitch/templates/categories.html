@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>BOOKSTORE123 - Nhà Sách Trực Tuyến</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#006a63","on-primary-fixed-variant":"#005049","on-error":"#ffffff","on-tertiary-fixed":"#2a1700","surface-container-high":"#dce9ff","tertiary":"#825100","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#80d5cb","tertiary-fixed-dim":"#ffb95f","on-secondary-fixed-variant":"#00504a","primary-container":"#008378","on-surface-variant":"#3d4947","surface-bright":"#f8f9ff","on-secondary-fixed":"#00201d","surface-dim":"#cbdbf5","error":"#ba1a1a","tertiary-fixed":"#ffddb8","inverse-primary":"#6bd8cb","inverse-surface":"#213145","surface-tint":"#006a61","outline-variant":"#bcc9c6","inverse-on-surface":"#eaf1ff","on-secondary-container":"#006f67","on-primary-fixed":"#00201d","surface-container-highest":"#d3e4fe","secondary-fixed":"#9cf2e8","on-primary":"#ffffff","surface-container-low":"#eff4ff","on-error-container":"#93000a","on-background":"#0b1c30","on-tertiary":"#ffffff","on-secondary":"#ffffff","surface":"#f8f9ff","surface-variant":"#d3e4fe","tertiary-container":"#a36700","on-tertiary-container":"#fffbff","on-surface":"#0b1c30","primary-fixed":"#89f5e7","background":"#f8f9ff","primary-fixed-dim":"#6bd8cb","on-tertiary-fixed-variant":"#653e00","secondary-container":"#99efe5","error-container":"#ffdad6","surface-container":"#e5eeff","primary":"#00685f","on-primary-container":"#f4fffc","outline":"#6d7a77"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-md":"1rem","margin-mobile":"1rem","space-2xl":"4rem","space-xs":"0.25rem","space-lg":"1.5rem","margin":"2rem","space-sm":"0.5rem","gutter":"1.5rem","gutter-mobile":"0.75rem","space-xl":"2.5rem"},fontFamily:{"body-sm":["Be Vietnam Pro"],"headline-lg-mobile":["Newsreader"],"headline-sm":["Newsreader"],"display-hero-mobile":["Newsreader"],"title-md":["Be Vietnam Pro"],"label-sm":["Be Vietnam Pro"],"price-lg":["Be Vietnam Pro"],"label-md":["Be Vietnam Pro"],"headline-md":["Newsreader"],"display-hero":["Newsreader"],"title-sm":["Be Vietnam Pro"],"body-lg":["Be Vietnam Pro"],"headline-lg":["Newsreader"],"price-md":["Be Vietnam Pro"],"body-md":["Be Vietnam Pro"]},fontSize:{"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg-mobile":["26px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"500"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"600"}],"title-md":["16px",{"lineHeight":"24px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"price-lg":["22px",{"lineHeight":"28px","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"500"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"600"}],"title-sm":["14px",{"lineHeight":"20px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.015em","fontWeight":"600"}],"price-md":["16px",{"lineHeight":"22px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1320px] mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm text-decoration-none" data-path="trang-chu" href="#"><img alt="BOOKSTORE123 Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw5tPQ6BZGGgANNm_y-i9QeseQ3tQABi4zzE5C3XNV0-Jg-qSNfEpx2JK1NGJQFe3E6CZoXEap3ebt3qYrYmfprDwKcQV5Z8jgQ2fs6ktJeF4z20nrwgZv_K7lgdB0ow71L0t1chmNdEmQKslXagxyj35gHobBkmKSZJwX4D6hDmq6nx1OuUvPlxWMjvuLpfqgKOtAvLvkvcRFVtb4OBQCrPqa2bcJIxea8l66REq7ie4JiEEoqA"><span class="font-headline-md text-headline-md text-primary tracking-tight">BOOKSTORE123</span></a></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><form action="#" class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px]">search</span><input class="w-full h-11 pl-11 pr-24 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-[0_1px_3px_rgba(15,23,42,0.04)]" placeholder="Tìm kiếm tựa sách, tác giả, nhà xuất bản, ISBN..." type="search"><button class="absolute right-1.5 h-8 px-space-md bg-primary text-on-primary rounded-lg font-title-sm text-title-sm hover:bg-primary-container transition-colors" type="submit">Tìm</button></form></div><div class="flex items-center gap-space-md"><a aria-label="Giỏ hàng" class="relative p-space-sm rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors" data-path="gio-hang" href="#"><span class="material-symbols-outlined text-[24px]">local_mall</span><span class="absolute -top-1 -right-1 flex items-center justify-center min-w-[20px] h-5 px-1 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm">3</span></a><div class="relative group"><button class="flex items-center gap-space-xs p-space-xs rounded-lg hover:bg-surface-container-low transition-colors" type="button"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="material-symbols-outlined text-[18px] text-on-surface-variant hidden sm:block">expand_more</span></button><div class="absolute right-0 top-full mt-space-xs w-56 bg-surface-container-lowest rounded-xl shadow-[0_10px_15px_-3px_rgba(15,23,42,0.05),0_4px_6px_-4px_rgba(15,23,42,0.03)] p-space-sm hidden group-hover:block z-50"><div class="px-space-md py-space-xs"><p class="font-body-sm text-body-sm text-on-surface-variant truncate">reader@bookstore123.vn</p></div><div class="my-space-xs h-[1px] bg-surface-container-high"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low transition-colors" data-path="ho-so-ca-nhan" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">badge</span>Tài khoản của tôi</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-container-low transition-colors" data-path="don-hang-cua-toi" href="#"><span class="material-symbols-outlined text-[18px] text-on-surface-variant">receipt_long</span>Đơn mua &amp; Đang giao</a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-secondary hover:bg-surface-container-low transition-colors" data-path="quan-tri-vien" href="#"><span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>Kênh quản trị</a><div class="my-space-xs h-[1px] bg-surface-container-high"></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="dang-xuat" href="#"><span class="material-symbols-outlined text-[18px]">logout</span>Đăng xuất</a></div></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1440px] mx-auto px-margin py-space-lg">
+<!-- Breadcrumb & Top Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md mb-space-lg">
+<div class="flex items-center gap-space-sm font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+<span>Bàn điều khiển</span>
+</a>
+<span>/</span>
+<span class="font-title-sm text-title-sm text-on-surface">Vận hành kho &amp; Danh mục</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          <span id="management-updated">Đang tải dữ liệu…</span>
+        </span>
+<button class="p-2 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors shadow-sm" id="management-refresh" title="Tải lại dữ liệu" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Main Admin Layout: Sidebar + Dual Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Synchronized Admin Navigation Rail -->
+<aside class="lg:col-span-3 bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="px-space-sm py-space-xs mb-space-sm">
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Bàn điều hành BOOKSTORE123</p>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-0.5">Quản Trị Hệ Thống</h2>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-title-sm text-title-sm" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span>Kho Sách Tổng Hợp</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">1.240</span>
+</a>
+<!-- Active Categories Section -->
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-title-sm text-title-sm shadow-sm transition-colors" href="#phan-he-the-loai">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">category</span>
+<span>Thể Loại Đang Quản Lý</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-on-primary/20 text-on-primary">8 Nhóm</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-title-sm text-title-sm" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span>Đơn Hàng &amp; Vận Chuyển</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed">12 Mới</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-title-sm text-title-sm" href="#phan-he-ton-kho">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span>Tồn Kho Chi Tiết</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-error-container text-on-error-container">2 Cảnh báo</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-title-sm text-title-sm" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>Quản lý khách hàng</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant">3.850</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-title-sm text-title-sm" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+<span>Chat Hỗ Trợ Trực Tuyến</span>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+</a>
+</nav>
+<!-- KPI Mini Visual: Stock Health Metric -->
+<div class="mt-space-lg p-space-md bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Sức khỏe kho hàng</span>
+<span class="font-title-sm text-title-sm text-secondary">94.2%</span>
+</div>
+<!-- Progress bar -->
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full rounded-full" style="width: 94.2%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Đảm bảo luân chuyển ổn định cho 1.240 tựa sách theo chuẩn ISBN.</p>
+</div>
+</aside>
+<!-- Main Operational Console Body -->
+<div class="lg:col-span-9 flex flex-col gap-space-xl">
+<!-- SECTION 1: Category Management (Mục 4.E) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm" id="phan-he-the-loai">
+<!-- Category Header & KPI Metrics -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md">
+<div>
+<div class="inline-flex items-center gap-1.5 text-primary font-label-md text-label-md font-semibold tracking-wide uppercase mb-1">
+<span class="material-symbols-outlined text-[16px]">folder_supervised</span>
+<span>Phân hệ 4.E</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Quản lý thể loại</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Phân cấp cây danh mục học thuật, văn học và ấn phẩm xuất bản.</p>
+</div>
+<!-- CTA Add Category -->
+<button class="inline-flex items-center justify-center gap-space-xs px-space-md py-2.5 bg-primary text-on-primary rounded-lg font-title-sm text-title-sm hover:bg-primary-container shadow-sm transition-all transform active:scale-95" onclick="openAddCategoryModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Thêm thể loại mới</span>
+</button>
+</div>
+
+<!-- Category Table -->
+<div class="overflow-x-auto rounded-lg shadow-sm">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low font-label-md text-label-md text-on-surface-variant tracking-wider uppercase">
+<th class="py-3.5 px-space-md">ID Thể loại</th>
+<th class="py-3.5 px-space-md">Tên thể loại</th>
+<th class="py-3.5 px-space-md">Mô tả tóm tắt</th>
+<th class="py-3.5 px-space-md text-center">Số lượng liên kết</th>
+<th class="py-3.5 px-space-md text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md" id="categoryTableBody">
+<!-- Category 1: Tied books -> Cannot Delete -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#TL-01</td>
+<td class="py-3.5 px-space-md">
+<span class="font-title-sm text-title-sm text-on-surface">Văn học Việt Nam &amp; Hải ngoại</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant max-w-[260px] truncate">
+                    Tuyển tập tiểu thuyết, tản văn, thi phẩm và phê bình hiện đại.
+                  </td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                      45 đầu sách
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-2">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container transition-colors" onclick="editCategory('#TL-01', 'Văn học Việt Nam &amp; Hải ngoại', 'Tuyển tập tiểu thuyết, tản văn, thi phẩm và phê bình hiện đại.')" title="Chỉnh sửa thông tin" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<!-- Disabled Delete Button with Clear Explanatory Tooltip -->
+<div class="relative group/tooltip inline-block">
+<button class="p-1.5 rounded-lg bg-surface-container text-outline cursor-not-allowed opacity-60" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover/tooltip:flex flex-col w-64 p-2.5 bg-inverse-surface text-inverse-on-surface rounded-lg shadow-xl text-left z-30 pointer-events-none">
+<div class="flex items-center gap-1.5 text-tertiary-fixed font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Không thể xóa thể loại</span>
+</div>
+<p class="font-body-sm text-body-sm mt-1 text-surface-container-high">Đang có <strong>45 đầu sách</strong> liên kết. Cần chuyển hoặc xóa sách thuộc thể loại này trước khi xóa nhóm.</p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Category 2: Tied books -> Cannot Delete -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#TL-02</td>
+<td class="py-3.5 px-space-md">
+<span class="font-title-sm text-title-sm text-on-surface">Kinh tế &amp; Đầu tư khởi nghiệp</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant max-w-[260px] truncate">
+                    Chiến lược doanh nghiệp, tài chính hành vi, quản trị vận hành.
+                  </td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                      320 đầu sách
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-2">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container transition-colors" onclick="editCategory('#TL-02', 'Kinh tế &amp; Đầu tư khởi nghiệp', 'Chiến lược doanh nghiệp, tài chính hành vi, quản trị vận hành.')" title="Chỉnh sửa thông tin" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<div class="relative group/tooltip inline-block">
+<button class="p-1.5 rounded-lg bg-surface-container text-outline cursor-not-allowed opacity-60" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover/tooltip:flex flex-col w-64 p-2.5 bg-inverse-surface text-inverse-on-surface rounded-lg shadow-xl text-left z-30 pointer-events-none">
+<div class="flex items-center gap-1.5 text-tertiary-fixed font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Không thể xóa thể loại</span>
+</div>
+<p class="font-body-sm text-body-sm mt-1 text-surface-container-high">Đang có <strong>320 đầu sách</strong> liên kết. Ràng buộc toàn vẹn dữ liệu danh mục.</p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Category 3: Tied books -> Cannot Delete -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#TL-03</td>
+<td class="py-3.5 px-space-md">
+<span class="font-title-sm text-title-sm text-on-surface">Tâm lý học &amp; Nhận thức luận</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant max-w-[260px] truncate">
+                    Tâm lý học chuyên sâu, phân tâm học, liệu pháp hành vi và tư duy.
+                  </td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                      182 đầu sách
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-2">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container transition-colors" onclick="editCategory('#TL-03', 'Tâm lý học &amp; Nhận thức luận', 'Tâm lý học chuyên sâu, phân tâm học, liệu pháp hành vi.')" title="Chỉnh sửa thông tin" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<div class="relative group/tooltip inline-block">
+<button class="p-1.5 rounded-lg bg-surface-container text-outline cursor-not-allowed opacity-60" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover/tooltip:flex flex-col w-64 p-2.5 bg-inverse-surface text-inverse-on-surface rounded-lg shadow-xl text-left z-30 pointer-events-none">
+<div class="flex items-center gap-1.5 text-tertiary-fixed font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Không thể xóa thể loại</span>
+</div>
+<p class="font-body-sm text-body-sm mt-1 text-surface-container-high">Đang có <strong>182 đầu sách</strong> liên kết. Cần gỡ liên kết trong kho trước.</p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Category 4: Tied books -> Cannot Delete -->
+<tr class="hover:bg-surface transition-colors">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#TL-04</td>
+<td class="py-3.5 px-space-md">
+<span class="font-title-sm text-title-sm text-on-surface">Khoa học Tự nhiên &amp; Vũ trụ</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant max-w-[260px] truncate">
+                    Thiên văn học, lượng tử, địa vật lý và thế giới vi mô.
+                  </td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                      94 đầu sách
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-2">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container transition-colors" onclick="editCategory('#TL-04', 'Khoa học Tự nhiên &amp; Vũ trụ', 'Thiên văn học, lượng tử, địa vật lý.')" title="Chỉnh sửa thông tin" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<div class="relative group/tooltip inline-block">
+<button class="p-1.5 rounded-lg bg-surface-container text-outline cursor-not-allowed opacity-60" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">delete_forever</span>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover/tooltip:flex flex-col w-64 p-2.5 bg-inverse-surface text-inverse-on-surface rounded-lg shadow-xl text-left z-30 pointer-events-none">
+<div class="flex items-center gap-1.5 text-tertiary-fixed font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Không thể xóa thể loại</span>
+</div>
+<p class="font-body-sm text-body-sm mt-1 text-surface-container-high">Đang có <strong>94 đầu sách</strong> liên kết. Hệ thống tự động khóa thao tác xóa.</p>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Category 5: 0 tied books -> CAN delete -->
+<tr class="hover:bg-surface transition-colors" id="categoryRow-TL05">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#TL-05</td>
+<td class="py-3.5 px-space-md">
+<span class="font-title-sm text-title-sm text-on-surface">Ấn bản Thử nghiệm (Bản thô)</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant max-w-[260px] truncate">
+                    Bản thảo dịch thuật lưu hành nội bộ chưa mở bán đại trà.
+                  </td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-title-sm text-title-sm">
+                      0 đầu sách
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-2">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container transition-colors" onclick="editCategory('#TL-05', 'Ấn bản Thử nghiệm', 'Bản thảo dịch thuật lưu hành nội bộ.')" title="Chỉnh sửa thông tin" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="p-1.5 rounded-lg text-error hover:bg-error-container transition-colors" onclick="deleteCategory('#TL-05')" title="Xóa thể loại trống" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- SECTION 2: Inventory Stock Control (Mục 4.G) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm" id="phan-he-ton-kho">
+<!-- Inventory Header & Filter Tools -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md font-semibold tracking-wide uppercase mb-1">
+<span class="material-symbols-outlined text-[16px]">warehouse</span>
+<span>Phân hệ 4.G</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Quản lý tồn kho</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Kiểm soát luồng hàng thực tế, ngưỡng cảnh báo thiếu hụt và số lượng tiêu thụ.</p>
+</div>
+<!-- Status filter badges -->
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-title-sm text-title-sm hover:bg-surface-container-high transition-colors" data-inventory-filter="all" onclick="filterInventory('all')" type="button">Tất cả</button>
+<button class="px-3 py-1.5 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed font-title-sm text-title-sm hover:opacity-90 transition-opacity" data-inventory-filter="warning" onclick="filterInventory('warning')" type="button">Sắp hết (1–5 cuốn)</button>
+<button class="px-3 py-1.5 rounded-lg bg-error-container text-on-error-container font-title-sm text-title-sm hover:opacity-90 transition-opacity" data-inventory-filter="out" onclick="filterInventory('out')" type="button">Hết hàng</button>
+</div>
+</div>
+<label class="block mb-space-md"><span class="font-title-sm text-title-sm">Tìm sách trong kho</span><input id="inventory-search" type="search" class="w-full h-11 px-3 mt-2 rounded-lg bg-surface-container-low" placeholder="Tên sách hoặc tác giả" autocomplete="off"></label>
+<!-- Inventory Table -->
+<div class="overflow-x-auto rounded-lg shadow-sm">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low font-label-md text-label-md text-on-surface-variant tracking-wider uppercase">
+<th class="py-3.5 px-space-md">ID Sách</th>
+<th class="py-3.5 px-space-md">Bìa sách</th>
+<th class="py-3.5 px-space-md">Tên sách &amp; Tác giả</th>
+<th class="py-3.5 px-space-md text-right">Tồn kho hiện tại</th>
+<th class="py-3.5 px-space-md text-right">Đã bán</th>
+<th class="py-3.5 px-space-md text-center">Tình trạng</th>
+<th class="py-3.5 px-space-md text-right">Thao tác kho</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md" id="inventoryTableBody">
+<!-- Book Item 1: In stock -->
+<tr class="hover:bg-surface transition-colors" id="row-BK001">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#BK-9081</td>
+<td class="py-3.5 px-space-md">
+<div class="w-12 h-16 rounded overflow-hidden shadow-sm bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Bìa sách văn học cổ điển Việt Nam với tông màu be trầm ấm, đường nét hoa văn trang nhã, phông chữ phong cách mộc bản tinh tế." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzeV_Y2hrbLxfdXrVUOSIs2M5wN5IYddH9RsfCAhnPeHLjvOkj7V38WFuvqBtlQhTU8QqxTJSHAYgkHsclGZWMDfUS_J4_2MXkAf5o50CDsjCxQWWxVvmL3EGFt8zeU3SN2ued8kZWOUVWkRzfSle2NngMDsy9ElZogeCIEiQruqFaw3kEvKa4nsNta6L_jcbsMPNw2XXYX7xW4mLpWu9_-vvBrjJ0IC3MtgZE-UTeRNdEkZ0SZw">
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="font-headline-sm text-headline-sm text-on-surface line-clamp-1" id="title-BK001">Số Đỏ (Tái bản Kỷ niệm)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vũ Trọng Phụng • NXB Hội Nhà Văn</p>
+</td>
+<td class="py-3.5 px-space-md text-right font-semibold font-mono text-title-md" id="stock-BK001">142</td>
+<td class="py-3.5 px-space-md text-right text-on-surface-variant font-mono" id="sold-BK001">858</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-title-sm text-title-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Còn hàng
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-on-surface rounded-lg hover:bg-primary hover:text-on-primary transition-all font-title-sm text-title-sm" onclick="openStockModal('BK-9081', 'Số Đỏ (Tái bản Kỷ niệm)', 142, 858)" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_calendar</span>
+<span>Cập nhật</span>
+</button>
+</td>
+</tr>
+<!-- Book Item 2: Warning (Low stock) -->
+<tr class="hover:bg-surface transition-colors" id="row-BK002">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#BK-4420</td>
+<td class="py-3.5 px-space-md">
+<div class="w-12 h-16 rounded overflow-hidden shadow-sm bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Bìa sách kinh tế chiến lược kinh doanh màu xanh mòng két sâu, typography thanh lịch hiện đại phong cách Bắc Âu." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB93fiwGvwZOcjx70IT_IC7sGl-79jpui7JFK_ye0lHbMgLA26eZKWYcd4iiFLas0u9w7hUkjPQS3e5PMApI8uxziQnlKpXmlvOCGqZUUOCfiaqf5dkbuWBiqhtv_fEQm1UYDDpLHqfsT7aFHrPn3kvj4XRs_REyJrB1ZLOeDbADS9ibK8SROFN6ROTkQ1L0nGBir0hjKHBr2IOwTRuDbU5fkCeO3VMPGsJEPjxsMruabl5F31W0A">
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="font-headline-sm text-headline-sm text-on-surface line-clamp-1" id="title-BK002">Chiến Lược Đại Dương Xanh</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">W. Chan Kim, Renée Mauborgne • NXB Trẻ</p>
+</td>
+<td class="py-3.5 px-space-md text-right font-semibold font-mono text-tertiary text-title-md" id="stock-BK002">06</td>
+<td class="py-3.5 px-space-md text-right text-on-surface-variant font-mono" id="sold-BK002">494</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-title-sm text-title-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                      Cảnh báo sắp hết
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-tertiary-fixed text-on-tertiary-fixed rounded-lg hover:bg-tertiary hover:text-on-tertiary transition-all font-title-sm text-title-sm" onclick="openStockModal('BK-4420', 'Chiến Lược Đại Dương Xanh', 6, 494)" type="button">
+<span class="material-symbols-outlined text-[16px]">add_box</span>
+<span>Nhập thêm</span>
+</button>
+</td>
+</tr>
+<!-- Book Item 3: Out of stock -->
+<tr class="hover:bg-surface transition-colors" id="row-BK003">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#BK-1102</td>
+<td class="py-3.5 px-space-md">
+<div class="w-12 h-16 rounded overflow-hidden shadow-sm bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Bìa sách triết học tư tưởng phương Đông tông màu xám mực thư pháp cổ kính và điểm xuyết ngọc bích." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_7zIqqHJjQRePJ17ktISziLlarHH-GaBTHse2dvpwzh69scvREkjA055Rd7YTLyT7QOX80gnoDOvp_BPMtsSXDfi5jOTkeg5kLKw-VQyi1jxRdK0EwylmModBPh-ACuqhuaIhJZGUDB7zuKMGj1gPLuuajxGZjf9zKgo1GV9Oi_H8ytYz8iU3THanxD8AYCIBTtLflf6CYZMfmRhIPvo21yI38ll2J_kMHMFjO7so6nqQrjYalw">
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="font-headline-sm text-headline-sm text-on-surface line-clamp-1" id="title-BK003">Lược Sử Thời Gian (Bìa Cứng Giới Hạn)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stephen Hawking • NXB Tri Thức</p>
+</td>
+<td class="py-3.5 px-space-md text-right font-semibold font-mono text-error text-title-md" id="stock-BK003">00</td>
+<td class="py-3.5 px-space-md text-right text-on-surface-variant font-mono" id="sold-BK003">300</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-title-sm text-title-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                      Hết hàng
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-error-container text-on-error-container rounded-lg hover:bg-error hover:text-on-error transition-all font-title-sm text-title-sm" onclick="openStockModal('BK-1102', 'Lược Sử Thời Gian (Bìa Cứng Giới Hạn)', 0, 300)" type="button">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+<span>Nhập kho gấp</span>
+</button>
+</td>
+</tr>
+<!-- Book Item 4: In Stock -->
+<tr class="hover:bg-surface transition-colors" id="row-BK004">
+<td class="py-3.5 px-space-md font-mono font-semibold text-on-surface">#BK-7890</td>
+<td class="py-3.5 px-space-md">
+<div class="w-12 h-16 rounded overflow-hidden shadow-sm bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Bìa sách tâm lý học trị liệu với hình minh họa tối giản cây xanh phát triển từ những trang sách trắng ngà." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACAniHusRRj7EkLTTuFmtRBi5h14gEl_LLhHhsnr47LsGqVSnnlOOQXK1FglDZerAd6iuc8kRfM5RiylomGphzcXntE-S7VLiLOIAXAcpn_QrHPnvzRK4etPzuCZe3EZ2UXEDZLObLrKk_vhdFa5ZAIhjpBOYD2kToVZpIYSXMJKC_1HocBrgupYXyjDnllcJI1H3cwUoaJ84LsWJr5Uqx8WIWtY6teO-6pE61hFSt2fvdIjWUNg">
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<p class="font-headline-sm text-headline-sm text-on-surface line-clamp-1" id="title-BK004">Tư Duy Nhanh Và Chậm</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daniel Kahneman • NXB Thế Giới</p>
+</td>
+<td class="py-3.5 px-space-md text-right font-semibold font-mono text-title-md" id="stock-BK004">58</td>
+<td class="py-3.5 px-space-md text-right text-on-surface-variant font-mono" id="sold-BK004">1.210</td>
+<td class="py-3.5 px-space-md text-center">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-title-sm text-title-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Còn hàng
+                    </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 bg-surface-container text-on-surface rounded-lg hover:bg-primary hover:text-on-primary transition-all font-title-sm text-title-sm" onclick="openStockModal('BK-7890', 'Tư Duy Nhanh Và Chậm', 58, 1210)" type="button">
+<span class="material-symbols-outlined text-[16px]">edit_calendar</span>
+<span>Cập nhật</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="inventory-results" role="status" class="font-body-sm text-body-sm text-on-surface-variant mt-space-md"></p>
+</section>
+</div>
+</div>
+</div>
+<!-- MODAL 1: Add/Edit Category Modal (Mục 4.E) -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-sm transition-opacity" id="categoryModal">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden transform transition-transform">
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">category</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="categoryModalTitle">Thêm Thể Loại Mới</h3>
+</div>
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeCategoryModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="categoryForm" onsubmit="handleCategorySubmit(event)">
+<input id="categoryFormMode" type="hidden" value="add">
+<input id="categoryIdInput" type="hidden" value="">
+<div>
+<label class="block font-title-sm text-title-sm text-on-surface mb-1" for="categoryNameInput">
+            Tên thể loại <span class="text-error">*</span>
+</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="categoryNameInput" placeholder="VD: Triết học Cổ điển, Mỹ thuật &amp; Thiết kế..." required="" type="text">
+</div>
+<div>
+<label class="block font-title-sm text-title-sm text-on-surface mb-1" for="categoryDescInput">
+            Mô tả định hướng nội dung
+          </label>
+<textarea class="w-full p-3 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="categoryDescInput" placeholder="Mô tả phạm vi các ấn phẩm thuộc thể loại này..." rows="3"></textarea>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sau khi tạo, thể loại sẽ sẵn sàng cho quá trình gán nhãn danh mục sách mới và hiển thị trên bộ lọc Storefront.</p>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-title-sm text-title-sm hover:bg-surface-container-high transition-colors" onclick="closeCategoryModal()" type="button">
+            Hủy
+          </button>
+<button class="px-space-lg py-2.5 rounded-lg bg-primary text-on-primary font-title-sm text-title-sm hover:bg-primary-container shadow-sm transition-colors" type="submit">
+            Lưu Thể Loại
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- MODAL 2: Mini Inventory Stock Modal (Mục 4.G) -->
+<div class="fixed inset-0 z-50 hidden flex items-center justify-center p-space-md bg-inverse-surface/40 backdrop-blur-sm transition-opacity" id="stockModal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden transform transition-transform">
+<div class="px-space-lg py-space-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">inventory</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Cập Nhật Tồn Kho</h3>
+</div>
+<button class="p-1 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeStockModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="stockForm" onsubmit="handleStockSubmit(event)">
+<input id="stockBookId" type="hidden" value="">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Tựa sách điều chỉnh</span>
+<p class="font-title-md text-title-md text-on-surface mt-0.5 line-clamp-2" id="stockBookTitleDisplay"></p>
+<span class="font-mono text-body-sm text-outline" id="stockBookIdDisplay"></span>
+</div>
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<div>
+<label class="block font-title-sm text-title-sm text-on-surface mb-1" for="stockSoldInput">
+              Số lượng đã bán <span class="text-error">*</span>
+</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-mono font-semibold focus:outline-none focus:ring-2 focus:ring-secondary shadow-sm" id="stockSoldInput" min="0" required="" type="number">
+</div>
+<div>
+<label class="block font-title-sm text-title-sm text-on-surface mb-1" for="stockRemainingInput">
+              Số lượng còn lại <span class="text-error">*</span>
+</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-mono font-semibold focus:outline-none focus:ring-2 focus:ring-secondary shadow-sm" id="stockRemainingInput" min="0" required="" type="number">
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg text-body-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span>Số tồn kho sẽ lập tức đồng bộ trên trang thanh toán người dùng.</span>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-title-sm text-title-sm hover:bg-surface-container-high transition-colors" onclick="closeStockModal()" type="button">
+            Hủy
+          </button>
+<button class="px-space-lg py-2.5 rounded-lg bg-secondary text-on-secondary font-title-sm text-title-sm hover:bg-primary shadow-sm transition-colors" type="submit">
+            Cập Nhật Kho
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- TOAST NOTIFICATION CONTAINER -->
+<div class="fixed bottom-6 left-6 z-50 flex flex-col gap-2 pointer-events-none" id="toastContainer"></div>
+<!-- Interactive Client-side Script -->
+
+</div></main><aside class="fixed bottom-6 right-6 z-40"><button class="flex items-center gap-space-xs px-space-md py-3 rounded-full bg-secondary text-on-secondary shadow-[0_10px_25px_-5px_rgba(0,106,99,0.35)] hover:bg-primary transition-all" type="button"><span class="material-symbols-outlined text-[20px]">chat</span><span class="font-title-sm text-title-sm hidden sm:inline">Hỗ trợ 24/7</span></button></aside></body></html>

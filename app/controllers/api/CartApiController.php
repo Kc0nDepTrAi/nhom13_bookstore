@@ -40,8 +40,18 @@ class CartApiController extends Controller
         ]);
     }
 
-    2$this->request->input('book_id', 0);
-        $quantity = max(1, (int) $this->request->input('quantity', 1));
+    // POST /api/cart
+    public function add(): void
+    {
+        $this->requireAuth();
+
+        $rawId=$this->request->input('book_id',0);
+        $rawQuantity=$this->request->input('quantity',1);
+        if (filter_var($rawId,FILTER_VALIDATE_INT)===false || filter_var($rawQuantity,FILTER_VALIDATE_INT)===false || (int)$rawQuantity<1) {
+            $this->error('Mã sách và số lượng phải là số nguyên dương.');return;
+        }
+        $bookId = (int) $rawId;
+        $quantity = (int) $rawQuantity;
 
         if ($bookId <= 0) {
             $this->error('book_id không hợp lệ');
@@ -87,8 +97,14 @@ class CartApiController extends Controller
     // PUT /api/cart/{book_id}   body: {quantity}
     public function updateItem(string $bookId): void
     {
+        $this->requireAuth();
+
         $bookId   = (int) $bookId;
-        $quantity = (int) $this->request->input('quantity', 0);
+        $rawQuantity=$this->request->input('quantity',0);
+        if (filter_var($rawQuantity,FILTER_VALIDATE_INT)===false || (int)$rawQuantity<0) {
+            $this->error('Số lượng phải là số nguyên không âm.');return;
+        }
+        $quantity = (int) $rawQuantity;
 
         $cart = $this->getCart();
         if (!isset($cart[$bookId])) {
@@ -100,6 +116,7 @@ class CartApiController extends Controller
             unset($cart[$bookId]);
         } else {
             $book = $this->bookModel->findById($bookId);
+            if (!$book) {$this->error('Sách không còn tồn tại.');return;}
             if ($book && $quantity > $book['quantity']) {
                 $this->error("Chỉ còn {$book['quantity']} sản phẩm trong kho");
                 return;
@@ -154,7 +171,10 @@ class CartApiController extends Controller
         ], $cart);
 
         try {
-            $result = $this->orderModel->createWithItems($username, $items);
+            $result = $this->orderModel->createWithItems($username, $items, [
+                'notes' => $this->request->input('notes', ''),
+                'payment_method' => $this->request->input('payment_method', 'cash'),
+            ]);
             $this->saveCart([]);
             $this->success($result, 'Đặt hàng thành công!', 201);
         } catch (\Exception $e) {
@@ -166,7 +186,16 @@ class CartApiController extends Controller
 
     private function getCart(): array
     {
-        return $_SESSION['cart'] ?? [];
+        $cart = $_SESSION['cart'] ?? [];
+        foreach ($cart as $key => &$item) {
+            $item['book_id'] = (int) ($item['book_id'] ?? $key);
+            if (!isset($item['author'])) {
+                $book = $this->bookModel->findById($item['book_id']);
+                $item['author'] = $book['author'] ?? '';
+            }
+        }
+        unset($item);
+        return $cart;
     }
 
     private function saveCart(array $cart): void

@@ -10,13 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 include '../db/db_connect.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_name('bookstore_sess');
+    session_start();
+}
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     echo json_encode(['status' => 'error', 'message' => 'Unauthorized']);
     exit;
 }
 
-$action = $_REQUEST['action'] ?? ''; // Nhận cả GET và POST
+$action = $_REQUEST['action'] ?? '';
+if (in_array($action,['reply','get_messages'],true) && ($_SERVER['REQUEST_METHOD']??'GET')!=='POST') bookstore_reject('Cần gửi bằng POST.',405); // Nhận cả GET và POST
 
 // Debug action
 error_log("Admin API Debug - ACTION: " . $action);

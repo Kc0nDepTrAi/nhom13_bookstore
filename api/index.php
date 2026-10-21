@@ -21,7 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once dirname(__DIR__) . '/config/config.php';
 
 spl_autoload_register(function (string $class): void {
-    $file = APP_PATH . '/' . str_replace(['App/', '\\'], ['', '/'], $class) . '.php';
+    $parts = explode('\\', $class);
+    $fileName = array_pop($parts) . '.php';
+    $dirPath = strtolower(implode('/', $parts));
+    $file = ROOT_PATH . '/' . $dirPath . '/' . $fileName;
     if (file_exists($file)) require $file;
 });
 
@@ -46,6 +49,8 @@ $router->get('/api/auth/me',        [\App\Controllers\Api\AuthApiController::cla
 // Route cụ thể phải đứng trước route có param {id}
 $router->get('/api/books',               [\App\Controllers\Api\BookApiController::class, 'index']);
 $router->get('/api/books/autocomplete',  [\App\Controllers\Api\BookApiController::class, 'autocomplete']);
+$router->get('/api/books/{id}/reviews',  [\App\Controllers\Api\BookApiController::class, 'reviews']);
+$router->post('/api/books/{id}/reviews', [\App\Controllers\Api\BookApiController::class, 'storeReview']);
 $router->get('/api/books/{id}',          [\App\Controllers\Api\BookApiController::class, 'show']);
 $router->post('/api/books',              [\App\Controllers\Api\BookApiController::class, 'store']);
 $router->put('/api/books/{id}',          [\App\Controllers\Api\BookApiController::class, 'update']);
@@ -87,28 +92,11 @@ $router->post('/api/upload-image', function (\App\Core\Request $req): void {
         \App\Core\Response::forbidden();
         return;
     }
-    $file = $_FILES['image'] ?? null;
-    if (!$file || $file['error'] !== UPLOAD_ERR_OK) {
-        \App\Core\Response::error('Không có file hoặc upload lỗi');
-        return;
-    }
-
-    $ext      = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    $allowed  = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
-    if (!in_array($ext, $allowed)) {
-        \App\Core\Response::error('Chỉ chấp nhận jpg, png, gif, webp');
-        return;
-    }
-
-    $filename = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', basename($file['name']));
-    $dest     = IMAGES_DIR . '/' . $filename;
-
-    if (!is_dir(IMAGES_DIR)) mkdir(IMAGES_DIR, 0755, true);
-
-    if (move_uploaded_file($file['tmp_name'], $dest)) {
-        \App\Core\Response::success(['filename' => $filename], 'Upload thành công');
-    } else {
-        \App\Core\Response::error('Lưu file thất bại', 500);
+    try {
+        $filename=bookstore_upload($_FILES['image']??[]);
+        \App\Core\Response::success(['filename'=>$filename], 'Upload thành công');
+    } catch (\Throwable $e) {
+        \App\Core\Response::error($e->getMessage());
     }
 });
 

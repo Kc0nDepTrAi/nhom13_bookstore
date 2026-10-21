@@ -11,7 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 include '../db/db_connect.php';
 
 // Lấy user_id từ session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_name('bookstore_sess');
+    session_start();
+}
 
 // Kiểm tra xác thực - yêu cầu đăng nhập
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['username'])) {

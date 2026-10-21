@@ -1,18 +1,6 @@
 <?php
-include '../db/db_connect.php';
-
+require_once '../db/db_connect.php';bookstore_models();
 if (isset($_POST['update_user'])) {
-    $id = $_POST['id'];
-    $fullname = $_POST['fullname'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-
-    $sql = "UPDATE users SET fullname='$fullname', phone='$phone', address='$address' WHERE id=$id";
-
-    if (mysqli_query($conn, $sql)) {
-        header("Location: manage_customers.php");
-    } else {
-        echo "Lỗi: " . mysqli_error($conn);
-    }
+    (new \App\Models\UserModel())->updateProfile((int)$_POST['id'],$_POST);
+    header('Location: manage_customers.php');exit;
 }
-?>
