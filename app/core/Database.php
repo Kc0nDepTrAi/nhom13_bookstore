@@ -22,6 +22,7 @@ class Database
             \PDO::ATTR_EMULATE_PREPARES   => false,
         ];
         $this->pdo = new \PDO($dsn, DB_USER, DB_PASS, $options);
+        $this->pdo->exec("SET time_zone = '+07:00'");
     }
 
     /** Lấy instance duy nhất (Singleton) */

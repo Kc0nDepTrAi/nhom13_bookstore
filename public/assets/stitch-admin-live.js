@@ -72,17 +72,21 @@
    const j=await chat('get_messages',{user_id:targetUser,last_id:lastId});
    if((selected.username||selected.user_id)!==targetUser)return;
    const follow=stream.scrollHeight-stream.scrollTop-stream.clientHeight<64;
+   const formatChatTime=L.formatChatTime||(d=>{if(!d)return '';try{const t=new Date(String(d).replace(/-/g,'/'));if(isNaN(t.getTime()))return String(d);return String(t.getDate()).padStart(2,'0')+'/'+String(t.getMonth()+1).padStart(2,'0')+'/'+t.getFullYear()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');}catch(e){return String(d);}});
    for(const m of j.messages){
     const n=Number(m.id);
     if(n<=lastId)continue;
     if(!lastId)stream.replaceChildren();
     const e=document.createElement('div');
-    e.className='flex '+(m.is_me?'justify-end':'justify-start');
-    const bubble=document.createElement('p');
-    bubble.className='max-w-[85%] p-space-sm rounded-xl font-body-sm text-body-sm '+(m.is_me?'bg-primary text-on-primary shadow-sm':'bg-surface-container-lowest text-on-surface shadow-sm');
-    L.text(bubble,m.message);
-    e.append(bubble);
+    e.className='flex flex-col '+(m.is_me?'items-end':'items-start');
     e.dataset.messageId=n;
+    const bubble=document.createElement('div');
+    bubble.className='max-w-[85%] p-space-sm rounded-xl font-body-sm text-body-sm shadow-sm leading-relaxed '+(m.is_me?'bg-primary text-on-primary rounded-br-none':'bg-surface-container-lowest text-on-surface rounded-bl-none');
+    L.text(bubble,m.message);
+    const timeSpan=document.createElement('span');
+    timeSpan.className='font-label-sm text-[11px] text-on-surface-variant/80 mt-1 px-1 '+(m.is_me?'text-right':'text-left');
+    L.text(timeSpan,formatChatTime(m.created_at));
+    e.append(bubble,timeSpan);
     stream.append(e);
     lastId=n;
    }
@@ -130,11 +134,17 @@
   if(!host||!template)return;
   const q=L.value('search-input').toLowerCase();
   const filtered=contacts.filter(u=>((u.fullname||'')+' '+(u.username||'')+' '+(u.phone||'')+' '+(u.email||'')).toLowerCase().includes(q));
+  const formatChatTime=L.formatChatTime||(d=>{if(!d)return '';try{const t=new Date(String(d).replace(/-/g,'/'));if(isNaN(t.getTime()))return String(d);return String(t.getDate()).padStart(2,'0')+'/'+String(t.getMonth()+1).padStart(2,'0')+'/'+t.getFullYear()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');}catch(e){return String(d);}});
   host.replaceChildren(...filtered.map(u=>{
    const e=template.cloneNode(true);
    const av=e.querySelector('.rounded-full:not([class*=bg-secondary])');
    if(av)L.text(av,u.avatar||u.username.slice(0,2).toUpperCase());
    L.text(e.querySelector('h3'),u.fullname||u.username);
+   const timeSpan=e.querySelector('h3 + span')||e.querySelector('h3 ~ span');
+   if(timeSpan){
+    L.text(timeSpan,formatChatTime(u.last_message));
+    timeSpan.className='font-label-sm text-[11px] text-on-surface-variant whitespace-nowrap';
+   }
    const snippet=e.querySelector('p');
    if(snippet)L.text(snippet,u.last_message_text||('@'+u.username));
    for(const s of e.querySelectorAll('span')){
