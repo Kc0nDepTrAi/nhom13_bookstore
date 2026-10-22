@@ -33,11 +33,7 @@ class CartApiController extends Controller
     public function index(): void
     {
         $cart = $this->getCart();
-        $this->success([
-            'items' => array_values($cart),
-            'total' => $this->calcTotal($cart),
-            'count' => array_sum(array_column($cart, 'quantity')),
-        ]);
+        $this->success($this->cartPayload($cart));
     }
 
     // POST /api/cart
@@ -87,11 +83,7 @@ class CartApiController extends Controller
         ];
 
         $this->saveCart($cart);
-        $this->success([
-            'items' => array_values($cart),
-            'total' => $this->calcTotal($cart),
-            'count' => array_sum(array_column($cart, 'quantity')),
-        ], 'Đã thêm vào giỏ hàng');
+        $this->success($this->cartPayload($cart), 'Đã thêm vào giỏ hàng');
     }
 
     // PUT /api/cart/{book_id}   body: {quantity}
@@ -125,11 +117,7 @@ class CartApiController extends Controller
         }
 
         $this->saveCart($cart);
-        $this->success([
-            'items' => array_values($cart),
-            'total' => $this->calcTotal($cart),
-            'count' => array_sum(array_column($cart, 'quantity')),
-        ], 'Cập nhật giỏ hàng thành công');
+        $this->success($this->cartPayload($cart), 'Cập nhật giỏ hàng thành công');
     }
 
     // DELETE /api/cart/{book_id}
@@ -139,18 +127,14 @@ class CartApiController extends Controller
         $cart   = $this->getCart();
         unset($cart[$bookId]);
         $this->saveCart($cart);
-        $this->success([
-            'items' => array_values($cart),
-            'total' => $this->calcTotal($cart),
-            'count' => array_sum(array_column($cart, 'quantity')),
-        ], 'Đã xóa sản phẩm khỏi giỏ');
+        $this->success($this->cartPayload($cart), 'Đã xóa sản phẩm khỏi giỏ');
     }
 
     // DELETE /api/cart  (xóa toàn bộ)
     public function clear(): void
     {
         $this->saveCart([]);
-        $this->success(['items' => [], 'total' => 0, 'count' => 0], 'Đã xóa giỏ hàng');
+        $this->success($this->cartPayload([]), 'Đã xóa giỏ hàng');
     }
 
     // POST /api/cart/checkout
@@ -183,6 +167,22 @@ class CartApiController extends Controller
     }
 
     // ------ Private helpers ------
+
+    private function cartPayload(array $cart): array
+    {
+        $subtotal = $this->calcTotal($cart);
+        $count = (int) array_sum(array_column($cart, 'quantity'));
+        $shipping = ($count > 0 && $subtotal < 250000) ? 30000.0 : 0.0;
+        $total = $subtotal + $shipping;
+
+        return [
+            'items'    => array_values($cart),
+            'subtotal' => $subtotal,
+            'shipping' => $shipping,
+            'total'    => $total,
+            'count'    => $count,
+        ];
+    }
 
     private function getCart(): array
     {

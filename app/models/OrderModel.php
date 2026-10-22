@@ -128,12 +128,16 @@ class OrderModel extends Model
             ];
         }
 
+        // Phí vận chuyển: nếu tổng giá sách dưới 250.000đ thì cộng 30.000đ phí giao hàng
+        $shippingFee = ($total > 0 && $total < 250000) ? 30000 : 0;
+        $finalTotal  = $total + $shippingFee;
+
         // Transaction
         $this->db->beginTransaction();
         try {
             $orderId = $this->create([
                 'username'    => $username,
-                'total_price' => $total,
+                'total_price' => $finalTotal,
                 'status'      => 'Đang xử lý',
                 'notes'       => $notes,
                 'payment_method' => $paymentMethod,
@@ -152,7 +156,7 @@ class OrderModel extends Model
             }
 
             $this->db->commit();
-            $result=['order_id' => $orderId, 'total_price' => $total, 'notes' => $notes, 'payment_method' => $paymentMethod];
+            $result=['order_id' => $orderId, 'total_price' => $finalTotal, 'notes' => $notes, 'payment_method' => $paymentMethod];
             $_SESSION['recent_order']=['key'=>$fingerprint,'time'=>time(),'result'=>$result];
             return $result;
         } catch (\Exception $e) {
