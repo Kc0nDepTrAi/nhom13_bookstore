@@ -148,9 +148,23 @@ function appendOrderReviewLinks(row,order){
  const dialog=document.createElement('dialog');dialog.id='order-reviews-'+order.id;dialog.className='stitch-order-review-dialog';dialog.setAttribute('aria-labelledby',dialog.id+'-title');
  const header=document.createElement('div');header.className='stitch-order-review-header';const title=document.createElement('h2');title.id=dialog.id+'-title';text(title,'Đánh giá đơn #'+order.id);
  const close=document.createElement('button');close.type='button';close.className='stitch-order-review-close';text(close,'×');close.setAttribute('aria-label','Đóng cửa sổ đánh giá');button(close,()=>dialog.close());header.append(title,close);
- const body=document.createElement('div');body.className='stitch-order-review-body';dialog.append(header,body);row.append(dialog);
+ const body=document.createElement('div');body.className='stitch-order-review-body';
+ const footer=document.createElement('div');footer.className='stitch-order-review-footer';
+ const footerStatus=document.createElement('span');footerStatus.className='stitch-order-review-footer-status text-xs text-secondary font-medium mr-auto';
+ const saveAllBtn=document.createElement('button');saveAllBtn.type='button';saveAllBtn.className='stitch-order-review-save-all';
+ text(saveAllBtn,items.length>1?'Lưu tất cả đánh giá ('+items.length+' sách)':'Lưu đánh giá');
+ const closeFooterBtn=document.createElement('button');closeFooterBtn.type='button';closeFooterBtn.className='stitch-order-review-btn-close';text(closeFooterBtn,'Đóng');
+ button(closeFooterBtn,()=>dialog.close());
+ footer.append(footerStatus,closeFooterBtn,saveAllBtn);
+ dialog.append(header,body,footer);row.append(dialog);
  dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close();});
- dialog.openReviews=()=>{if(dialog.open)return;body.replaceChildren();dialog.showModal();
+ 
+ dialog.openReviews=()=>{
+  if(dialog.open)return;
+  body.replaceChildren();
+  text(footerStatus,'');
+  dialog.showModal();
+  const bookHandlers=[];
   for(const item of items){
    const section=document.createElement('section'),heading=document.createElement('h3'),summary=document.createElement('p'),status=document.createElement('p'),ratingForm=document.createElement('form'),stars=document.createElement('fieldset'),legend=document.createElement('legend'),save=document.createElement('button');
    section.className='stitch-order-review-book';section.dataset.reviewBook=Number(item.book_id);text(heading,item.title);text(summary,'Đang tải đánh giá…');status.setAttribute('role','status');status.className='stitch-order-review-status';ratingForm.hidden=true;stars.className='stitch-review-stars';text(legend,'Chọn số sao');stars.append(legend);
@@ -158,8 +172,71 @@ function appendOrderReviewLinks(row,order){
    const commentLabel=document.createElement('label'),comment=document.createElement('textarea');comment.id=dialog.id+'-comment-'+Number(item.book_id);comment.name='comment';comment.rows=4;comment.maxLength=2000;comment.className='stitch-review-comment';comment.placeholder='Chia sẻ cảm nhận về cuốn sách (tối đa 2.000 ký tự)';commentLabel.htmlFor=comment.id;commentLabel.className='stitch-review-comment-label';text(commentLabel,'Nội dung đánh giá');save.type='submit';save.className='stitch-order-review-save';text(save,'Gửi đánh giá');ratingForm.append(stars,commentLabel,comment,save);section.append(heading,summary,ratingForm,status);body.append(section);let saving=false,hasReview=false;
    const paint=data=>{hasReview=Boolean(data.user_rating);text(summary,data.rating_count?'★ '+Number(data.rating_average).toFixed(1)+' / 5 ('+data.rating_count+' đánh giá)':'Chưa có đánh giá.');ratingForm.hidden=!data.eligible;comment.value=data.user_comment||'';if(!data.eligible)text(status,'Bạn có thể đánh giá khi đơn hàng chứa sách này đã hoàn thành.');for(const input of stars.querySelectorAll('input'))input.checked=Number(input.value)===Number(data.user_rating);text(save,data.user_rating?'Cập nhật đánh giá':'Gửi đánh giá');};
    api('/books/'+Number(item.book_id)+'/reviews').then(paint).catch(error=>{text(summary,'Không tải được đánh giá.');text(status,error.message);});
-   form(ratingForm,async()=>{if(saving)return;const selected=stars.querySelector('input:checked');if(!selected){text(status,'Vui lòng chọn số sao.');return;}const updating=hasReview;saving=true;stars.disabled=true;comment.disabled=true;save.disabled=true;text(status,'Đang lưu đánh giá…');try{paint(await api('/books/'+Number(item.book_id)+'/reviews','POST',{rating:Number(selected.value),comment:comment.value}));const message=updating?'Đã cập nhật đánh giá':'Đánh giá thành công';text(status,message);dialog.close();notice(message);}catch(error){text(status,error.message);}finally{saving=false;stars.disabled=false;comment.disabled=false;save.disabled=false;}});
+   form(ratingForm,async()=>{
+    if(saving)return;
+    const selected=stars.querySelector('input:checked');
+    if(!selected){text(status,'Vui lòng chọn số sao.');status.className='stitch-order-review-status text-error font-medium';return;}
+    const updating=hasReview;
+    saving=true;stars.disabled=true;comment.disabled=true;save.disabled=true;
+    text(status,'Đang lưu đánh giá…');status.className='stitch-order-review-status text-primary';
+    try{
+     paint(await api('/books/'+Number(item.book_id)+'/reviews','POST',{rating:Number(selected.value),comment:comment.value}));
+     const message=updating?'✓ Đã cập nhật đánh giá thành công':'✓ Đã lưu đánh giá thành công';
+     text(status,message);
+     status.className='stitch-order-review-status text-emerald-600 font-semibold';
+     notice((updating?'Đã cập nhật đánh giá: ':'Đã đánh giá thành công: ')+item.title);
+    }catch(error){
+     text(status,error.message);
+     status.className='stitch-order-review-status text-error font-medium';
+    }finally{
+     saving=false;stars.disabled=false;comment.disabled=false;save.disabled=false;
+    }
+   });
+   bookHandlers.push({item,stars,comment,status,save,paint});
   }
+  
+  button(saveAllBtn,async()=>{
+   const toSave=bookHandlers.filter(b=>b.stars.querySelector('input:checked'));
+   if(!toSave.length){
+    text(footerStatus,'Vui lòng chọn số sao cho ít nhất một cuốn sách.');
+    footerStatus.className='stitch-order-review-footer-status text-xs text-error font-semibold mr-auto';
+    return;
+   }
+   saveAllBtn.disabled=true;
+   saveAllBtn.setAttribute('aria-busy','true');
+   text(saveAllBtn,'Đang lưu tất cả…');
+   text(footerStatus,'Đang lưu '+toSave.length+' đánh giá…');
+   footerStatus.className='stitch-order-review-footer-status text-xs text-primary font-medium mr-auto';
+   let successCount=0,errCount=0;
+   for(const b of toSave){
+    const selected=b.stars.querySelector('input:checked');
+    b.save.disabled=true;b.stars.disabled=true;b.comment.disabled=true;
+    text(b.status,'Đang lưu…');
+    try{
+     const res=await api('/books/'+Number(b.item.book_id)+'/reviews','POST',{rating:Number(selected.value),comment:b.comment.value});
+     b.paint(res);
+     text(b.status,'✓ Đã lưu đánh giá');
+     b.status.className='stitch-order-review-status text-emerald-600 font-semibold';
+     successCount++;
+    }catch(err){
+     errCount++;
+     text(b.status,err.message);
+     b.status.className='stitch-order-review-status text-error font-medium';
+    }finally{
+     b.save.disabled=false;b.stars.disabled=false;b.comment.disabled=false;
+    }
+   }
+   saveAllBtn.disabled=false;
+   saveAllBtn.removeAttribute('aria-busy');
+   text(saveAllBtn,items.length>1?'Lưu tất cả đánh giá ('+items.length+' sách)':'Lưu đánh giá');
+   if(errCount===0&&successCount>0){
+    notice('Đã lưu tất cả đánh giá thành công!');
+    dialog.close();
+   }else{
+    text(footerStatus,'Đã lưu '+successCount+'/'+toSave.length+' sách thành công.');
+    footerStatus.className='stitch-order-review-footer-status text-xs '+(errCount?'text-error':'text-emerald-600')+' font-semibold mr-auto';
+   }
+  });
  };
  return dialog;
 }
