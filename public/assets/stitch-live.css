@@ -195,3 +195,31 @@ body.stitch-admin { padding-left: 248px; }
 .stitch-review-comment-label{display:block;margin:16px 0 8px;font-size:14px;font-weight:600}
 .stitch-review-comment{display:block;box-sizing:border-box;width:100%;padding:12px;border:1px solid #cddcd8;border-radius:8px;background:#f7f9ff;color:#132b28;font:inherit;font-size:14px;line-height:1.5;resize:vertical;min-height:100px}
 .stitch-review-comment:focus{outline:2px solid #006b61;outline-offset:1px}
+
+
+/* Scrollbar styling for customer and admin chat */
+#chatMessages,
+#chat-messages-container {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0, 104, 95, 0.4) transparent !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+}
+#chatMessages::-webkit-scrollbar,
+#chat-messages-container::-webkit-scrollbar {
+  display: block !important;
+  width: 6px !important;
+}
+#chatMessages::-webkit-scrollbar-track,
+#chat-messages-container::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+#chatMessages::-webkit-scrollbar-thumb,
+#chat-messages-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 104, 95, 0.35) !important;
+  border-radius: 9999px !important;
+}
+#chatMessages::-webkit-scrollbar-thumb:hover,
+#chat-messages-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 104, 95, 0.65) !important;
+}

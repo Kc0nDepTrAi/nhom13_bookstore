@@ -464,8 +464,8 @@
 </div>
 </div>
 <!-- Interactive Support Chat Drawer Widget (Bottom Right) -->
-<div class="fixed bottom-24 right-6 z-40 w-80 sm:w-96 bg-surface-container-lowest rounded-2xl shadow-2xl border-0 overflow-hidden hidden flex-col transition-all" id="chat-popup">
-<div class="bg-primary p-space-md text-on-primary flex items-center justify-between">
+<div class="fixed bottom-24 right-6 z-40 w-80 sm:w-[420px] h-[520px] max-h-[82vh] bg-surface-container-lowest rounded-2xl shadow-2xl border-0 overflow-hidden hidden flex-col transition-all" id="chat-popup">
+<div class="bg-primary p-space-md text-on-primary flex items-center justify-between shrink-0">
 <div class="flex items-center gap-2">
 <div class="w-3 h-3 rounded-full bg-emerald-300 animate-pulse"></div>
 <div>
@@ -477,7 +477,7 @@
 <span class="material-symbols-outlined text-[20px]">close</span>
 </button>
 </div>
-<div class="p-space-md max-h-64 overflow-y-auto flex flex-col gap-space-sm bg-surface">
+<div class="p-space-md flex-1 overflow-y-auto flex flex-col gap-space-sm bg-surface" id="chatMessages">
 <div class="self-start max-w-[85%] bg-surface-container-lowest p-space-sm rounded-xl text-on-surface shadow-sm font-body-sm text-body-sm">
         Xin chào quý bạn đọc! BOOKSTORE123 có thể hỗ trợ tìm kiếm đầu sách hay kiểm tra đơn hàng giúp bạn không ạ?
       </div>
@@ -488,12 +488,12 @@
         Dạ tác phẩm hiện tại đang có sẵn 24 cuốn bìa mềm cao cấp từ NXB Hội Nhà Văn, bản in đẹp chuẩn giấy chống cận thị ạ!
       </div>
 </div>
-<div class="p-space-sm bg-surface-container-lowest border-t border-surface-container flex items-center gap-2">
-<input class="flex-1 bg-surface-container-low px-3 py-2 rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-1 focus:ring-primary" placeholder="Nhập câu hỏi tại đây..." type="text">
-<button class="p-2 bg-primary text-on-primary rounded-xl hover:bg-primary-container" type="button">
+<form class="p-space-sm bg-surface-container-lowest border-t border-surface-container flex items-center gap-2 shrink-0" id="chatForm">
+<input class="flex-1 bg-surface-container-low px-3 py-2 rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-1 focus:ring-primary" id="chatInput" placeholder="Nhập câu hỏi tại đây..." type="text">
+<button class="p-2 bg-primary text-on-primary rounded-xl hover:bg-primary-container" type="submit">
 <span class="material-symbols-outlined text-[18px]">send</span>
 </button>
-</div>
+</form>
 </div>
 <!-- Inline Script for Interactive Handlers -->
 

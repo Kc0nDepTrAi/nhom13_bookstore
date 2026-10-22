@@ -166,40 +166,44 @@
 <!-- RIGHT COLUMN: Detailed Active Conversation (8 Cols) -->
 <section class="lg:col-span-8 flex flex-col justify-between bg-surface-container-lowest">
 <!-- Conversation Detail Header -->
-<div class="p-space-md bg-surface-container-lowest shadow-[0_1px_4px_rgba(15,23,42,0.03)] flex flex-wrap items-center justify-between gap-space-md">
+<div class="p-space-md bg-surface-container-lowest shadow-[0_1px_4px_rgba(15,23,42,0.03)] flex flex-wrap items-center justify-between gap-space-md" id="chat-header-panel">
 <div class="flex items-center gap-space-md min-w-0">
 <div class="relative">
-<div class="w-12 h-12 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-title-md text-title-md font-bold shadow-sm">
-                TM
+<div class="w-12 h-12 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-title-md text-title-md font-bold shadow-sm" id="active-user-avatar">
+                --
               </div>
 <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-secondary rounded-full ring-2 ring-surface-container-lowest" title="Đang trực tuyến"></span>
 </div>
 <div class="min-w-0">
 <div class="flex items-center gap-space-xs flex-wrap">
-<h3 class="font-title-md text-title-md text-on-surface">Trần Minh Triết</h3>
-<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">(@minhtriet)</span>
-
+<h3 class="font-title-md text-title-md text-on-surface" id="active-user-fullname">Chọn khách hàng để xem tin nhắn</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono" id="active-user-username"></span>
 </div>
-<div class="flex items-center gap-space-md mt-0.5 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-space-md mt-0.5 text-on-surface-variant font-body-sm text-body-sm flex-wrap">
 <span class="flex items-center gap-1 font-mono">
 <span class="material-symbols-outlined text-[16px] text-secondary">phone</span>
-                  0918 345 678
-                </span>
+<span id="active-user-phone">--</span>
+</span>
 <span class="hidden sm:inline">•</span>
-<span class="hidden sm:flex items-center gap-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">mail</span>
+<span id="active-user-email">--</span>
+</span>
+<span class="hidden sm:inline">•</span>
+<span class="flex items-center gap-1">
 <span class="material-symbols-outlined text-[16px] text-secondary">location_on</span>
-                  Q. Bình Thạnh, TP.HCM
-                </span>
+<span id="active-user-address">--</span>
+</span>
 </div>
 </div>
 </div>
 <!-- Quick link to current order -->
-<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-2 rounded-xl">
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-2 rounded-xl" id="active-user-order-card" style="display:none;">
 <div class="flex flex-col text-right">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-medium">Đơn hàng đang xử lý</span>
-<a class="font-title-sm text-title-sm text-primary hover:underline flex items-center gap-1 font-mono" href="#">
-                #DH-8921
-                <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-medium">Đơn hàng gần nhất</span>
+<a class="font-title-sm text-title-sm text-primary hover:underline flex items-center gap-1 font-mono" id="active-user-order-link" href="#">
+<span id="active-user-order-id">#DH-</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
 </a>
 </div>
 <div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
