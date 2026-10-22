@@ -171,7 +171,7 @@
 <div class="flex items-center gap-space-md overflow-x-auto pb-4 mb-space-lg">
 <button class="pb-3 px-2 font-title-md text-title-md text-primary font-bold transition-all relative" id="tab-intro-btn" onclick="switchTab('intro')">
 <span>Giới thiệu tác phẩm</span>
-<span class="absolute bottom-0 left-0 w-full h-[2.5px] bg-primary rounded-full"></span>
+<span class="tab-indicator-line absolute bottom-0 left-0 w-full h-[2.5px] bg-primary rounded-full"></span>
 </button>
 <button class="pb-3 px-2 font-title-md text-title-md text-on-surface-variant hover:text-on-surface transition-all relative" id="tab-spec-btn" onclick="switchTab('spec')">
 <span>Thông số ấn bản</span>
@@ -278,6 +278,14 @@
 <button id="review-submit" class="mt-4 px-4 py-2 rounded-lg bg-primary text-on-primary" type="submit">Gửi đánh giá</button>
 </form>
 <p id="review-status" role="status" aria-live="polite"></p>
+<div id="reviews-list-section" class="mt-8 pt-6 border-t border-[#d6e3df]">
+<div class="flex items-center justify-between gap-4 mb-4">
+<h4 class="font-title-md text-title-md font-bold text-on-surface">
+Đánh giá &amp; Bình luận từ khách hàng (<span id="reviews-list-count">0</span>)
+</h4>
+</div>
+<div id="reviews-list-container" class="space-y-4"></div>
+</div>
 </div>
 </div>
 </div>

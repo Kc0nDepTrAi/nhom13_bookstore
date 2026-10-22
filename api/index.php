@@ -51,6 +51,7 @@ $router->get('/api/books',               [\App\Controllers\Api\BookApiController
 $router->get('/api/books/autocomplete',  [\App\Controllers\Api\BookApiController::class, 'autocomplete']);
 $router->get('/api/books/{id}/reviews',  [\App\Controllers\Api\BookApiController::class, 'reviews']);
 $router->post('/api/books/{id}/reviews', [\App\Controllers\Api\BookApiController::class, 'storeReview']);
+$router->delete('/api/reviews/{id}', [\App\Controllers\Api\BookApiController::class, 'deleteReview']);
 $router->get('/api/books/{id}',          [\App\Controllers\Api\BookApiController::class, 'show']);
 $router->post('/api/books',              [\App\Controllers\Api\BookApiController::class, 'store']);
 $router->put('/api/books/{id}',          [\App\Controllers\Api\BookApiController::class, 'update']);

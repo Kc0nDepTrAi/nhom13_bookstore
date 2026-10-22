@@ -60,6 +60,18 @@ class BookApiController extends Controller
         $this->success($this->bookModel->getReviewState((int) $id, (string) ($_SESSION['username'] ?? '')));
     }
 
+    // DELETE /api/reviews/{id} (Admin)
+    public function deleteReview(string $id): void
+    {
+        $this->requireAdmin();
+        if (!ctype_digit($id) || (int) $id < 1) {
+            $this->error('ID không hợp lệ');
+            return;
+        }
+        $this->bookModel->deleteReview((int) $id);
+        $this->success([], 'Đã xóa đánh giá thành công.');
+    }
+
     // POST /api/books/{id}/reviews (CSRF is enforced by the existing API bootstrap).
     public function storeReview(string $id): void
     {

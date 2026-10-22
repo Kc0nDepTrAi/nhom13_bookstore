@@ -90,6 +90,19 @@ class BookModel extends Model
             $count += $total;
             $sum += $rating * $total;
         }
+
+        // Danh sách tất cả đánh giá & nhận xét của khách hàng cho cuốn sách này
+        $stmtReviews = $this->db->prepare(
+            "SELECT r.`id`, r.`rating`, r.`comment`, r.`created_at`, r.`updated_at`,
+                    u.`username`, u.`fullname`
+             FROM `book_reviews` r
+             JOIN `users` u ON u.`id` = r.`user_id`
+             WHERE r.`book_id` = ?
+             ORDER BY r.`updated_at` DESC, r.`id` DESC"
+        );
+        $stmtReviews->execute([$bookId]);
+        $reviews = $stmtReviews->fetchAll();
+
         $eligible = false;
         $userRating = null;
         $userComment = '';
@@ -116,10 +129,18 @@ class BookModel extends Model
             'rating_average' => $count ? round($sum / $count, 2) : 0,
             'rating_count' => $count,
             'ratings' => $ratings,
+            'reviews' => $reviews,
             'eligible' => $eligible,
             'user_rating' => $userRating,
             'user_comment' => $userComment,
         ];
+    }
+
+    public function deleteReview(int $reviewId): bool
+    {
+        $stmt = $this->db->prepare("DELETE FROM `book_reviews` WHERE `id` = ?");
+        $stmt->execute([$reviewId]);
+        return $stmt->rowCount() > 0;
     }
 
     /** Atomic eligibility check and upsert: a reader has one rating per book. */

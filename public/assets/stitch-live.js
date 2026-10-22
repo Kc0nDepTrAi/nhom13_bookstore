@@ -192,6 +192,94 @@ async function setupBookReviews(book){
   text(id('review-own-rating'),data.user_rating?'Đánh giá của bạn: '+data.user_rating+' / 5 sao. Bạn có thể chọn lại để cập nhật.':'Chọn từ 1 đến 5 sao để đánh giá sách đã mua.');
   const distribution=id('review-distribution');distribution.replaceChildren();
   for(let stars=5;stars>=1;stars--){const row=document.createElement('div');row.className='stitch-rating-distribution';const label=document.createElement('span');text(label,stars+' sao');const bar=document.createElement('progress');bar.max=Math.max(count,1);bar.value=Number(data.ratings?.[stars])||0;bar.setAttribute('aria-label',stars+' sao');const number=document.createElement('span');text(number,Number(data.ratings?.[stars])||0);row.append(label,bar,number);distribution.append(row);}
+  const listContainer=id('reviews-list-container');
+  const listCount=id('reviews-list-count');
+  const reviews=Array.isArray(data.reviews)?data.reviews:[];
+  if(listCount)text(listCount,String(reviews.length));
+  if(listContainer){
+   listContainer.replaceChildren();
+   if(!reviews.length){
+    const empty=document.createElement('p');
+    empty.className='text-sm text-secondary italic py-3';
+    text(empty,'Chưa có nhận xét hoặc bình luận nào từ khách hàng.');
+    listContainer.append(empty);
+   }else{
+    for(const r of reviews){
+     const item=document.createElement('div');
+     item.className='stitch-review-item p-4 rounded-xl bg-surface-container-low/70 border border-[#d6e3df] flex flex-col gap-2.5 transition-all hover:bg-surface-container-low';
+     const header=document.createElement('div');
+     header.className='flex items-center justify-between gap-3 flex-wrap';
+     const authorBox=document.createElement('div');
+     authorBox.className='flex items-center gap-2.5';
+     const avatar=document.createElement('div');
+     avatar.className='w-9 h-9 rounded-full bg-primary/15 text-primary font-bold text-sm flex items-center justify-center shrink-0 uppercase shadow-xs';
+     const nameText=(r.fullname&&r.fullname.trim())?r.fullname.trim():(r.username||'Khách hàng');
+     text(avatar,nameText.charAt(0).toUpperCase());
+     const nameWrap=document.createElement('div');
+     nameWrap.className='flex flex-col';
+     const nameSpan=document.createElement('span');
+     nameSpan.className='font-title-sm text-title-sm font-semibold text-on-surface';
+     text(nameSpan,nameText);
+     nameWrap.append(nameSpan);
+     if(r.fullname&&r.fullname.trim()&&r.username&&r.username!==r.fullname){
+      const userSub=document.createElement('span');
+      userSub.className='text-xs text-secondary';
+      text(userSub,'@'+r.username);
+      nameWrap.append(userSub);
+     }
+     authorBox.append(avatar,nameWrap);
+     const metaBox=document.createElement('div');
+     metaBox.className='flex items-center gap-3';
+     const starsBox=document.createElement('div');
+     starsBox.className='flex items-center text-amber-500 font-bold text-sm gap-0.5';
+     const starCount=Math.max(1,Math.min(5,Number(r.rating)||5));
+     let starIcons='';
+     for(let i=1;i<=5;i++)starIcons+=(i<=starCount)?'★':'☆';
+     text(starsBox,starIcons+' ('+starCount+'/5)');
+     const timeSpan=document.createElement('span');
+     timeSpan.className='text-xs text-secondary whitespace-nowrap';
+     const dt=r.created_at||r.updated_at||'';
+     if(dt){
+      try{
+       const d=new Date(dt.replace(/-/g,'/'));
+       text(timeSpan,d.toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}));
+      }catch(e){
+       text(timeSpan,dt);
+      }
+     }
+     metaBox.append(starsBox,timeSpan);
+     if(C.user.role==='admin'){
+      const delBtn=document.createElement('button');
+      delBtn.type='button';
+      delBtn.className='text-xs text-error hover:underline ml-2 font-medium cursor-pointer';
+      text(delBtn,'Xóa');
+      button(delBtn,async()=>{
+       if(confirm('Bạn có chắc muốn xóa đánh giá của khách hàng '+nameText+'?')){
+        try{
+         await api('/reviews/'+r.id,'DELETE');
+         paint(await api('/books/'+book.id+'/reviews'));
+         notice('Đã xóa đánh giá thành công.');
+        }catch(err){
+         alert(err.message||'Không thể xóa đánh giá');
+        }
+       }
+      });
+      metaBox.append(delBtn);
+     }
+     header.append(authorBox,metaBox);
+     const body=document.createElement('div');
+     body.className='text-sm text-on-surface leading-relaxed pl-11';
+     if(r.comment&&r.comment.trim()){
+      text(body,r.comment.trim());
+     }else{
+      body.className+=' text-secondary italic';
+      text(body,'(Khách hàng đã đánh giá '+starCount+' sao và không để lại bình luận)');
+     }
+     item.append(header,body);
+     listContainer.append(item);
+    }
+   }
+  }
  }
  try{paint(await api('/books/'+book.id+'/reviews'));}catch(error){text(status,error.message);return;}
  form(ratingForm,async()=>{
@@ -203,7 +291,7 @@ async function setupBookReviews(book){
  });
 }
 
- async function detail(){const b=await api('/books/'+Number(params.get('book_id')));for(const e of $$('[data-live=title]'))text(e,b.title);for(const e of $$('[data-live=author]'))text(e,b.author);for(const e of $$('[data-live=price]'))text(e,money(b.price));image($('[data-live=cover]'),b.image);text(id('tab-intro-content'),b.description||'Chưa có mô tả.');text(id('tab-spec-content'),'Thông tin hiện có: '+(b.category_name||'')+' • Tác giả: '+b.author);for(const s of $$('main span'))if(/Còn hàng.*cuốn/i.test(s.textContent))s.innerHTML=Number(b.quantity)>0?'Còn hàng <span class="font-normal text-on-surface-variant">('+b.quantity+' cuốn)</span>':'<span class="text-error">Hết hàng</span>';await setupBookReviews(b);button(id('btn-wishlist'),unsupported);val('qty-input',1);button(id('qty-decrement'),()=>val('qty-input',Math.max(1,Number(value('qty-input'))-1)));button(id('qty-increment'),()=>val('qty-input',Math.min(Number(b.quantity)||1,Number(value('qty-input'))+1)));button(id('btn-add-cart'),()=>addBook(b,value('qty-input')));if(id('btn-add-cart')){id('btn-add-cart').disabled=Boolean(C.user.username)&&Number(b.quantity)<=0;if(id('btn-add-cart').disabled){id('btn-add-cart').title='Sách đã hết hàng';const label=[...id('btn-add-cart').querySelectorAll('span')].find(e=>!e.classList.contains('material-symbols-outlined'));text(label,'Hết hàng')}}window.switchTab=t=>{for(const x of ['intro','spec','reviews'])id('tab-'+x+'-content')?.classList.toggle('hidden',x!==t)};if(params.get('review')==='1')window.switchTab('reviews');for(const bt of $$('button'))if(/Đọc thử/.test(bt.textContent))button(bt,unsupported);for(const bt of $$('button'))if(/Mua ngay|So sánh phiên bản/.test(bt.textContent))bt.remove();for(const s of $$('[class*=line-through], span'))if(/150\.000|-17%|Xem thử 24 trang/.test(s.textContent))s.remove();for(const p of $$('p'))if(/Kiệt tác văn chương đương đại/.test(p.textContent))p.remove();const relatedGrid=id('related-books-grid');if(relatedGrid&&relatedGrid.firstElementChild){const cardTpl=cleanClone(relatedGrid.firstElementChild);if(!books.length)await getBooks();let relList=books.filter(x=>Number(x.id)!==Number(b.id));if(b.category_id){const sameCat=relList.filter(x=>Number(x.category_id)===Number(b.category_id));const otherCat=relList.filter(x=>Number(x.category_id)!==Number(b.category_id));relList=[...sameCat,...otherCat];}const chosen=relList.slice(0,4);if(chosen.length>0){relatedGrid.replaceChildren(...chosen.map(rb=>{const c=cleanClone(cardTpl);image(c.querySelector('img'),rb.image);const title=c.querySelector('h4,h3,h2');text(title,rb.title);text(c.querySelector('[class*=font-price]'),money(rb.price));const author=c.querySelector('[class*=font-label][class*=uppercase],p[class*=uppercase]');text(author,rb.author);const badge=c.querySelector('.absolute.top-2.left-2');if(badge)text(badge,rb.category_name||(Number(rb.quantity)>0?'Còn hàng':'Hết hàng'));const rating=c.querySelector('.font-bold');if(rating)text(rating,rb.rating_average?Number(rb.rating_average).toFixed(1):(rb.rating_avg?Number(rb.rating_avg).toFixed(1):'5.0'));const btn=c.querySelector('button');if(btn){btn.setAttribute('aria-label',Number(rb.quantity)<=0&&C.user.username?'Sách '+rb.title+' đã hết hàng':'Thêm '+rb.title+' vào giỏ');btn.disabled=Boolean(C.user.username)&&Number(rb.quantity)<=0;if(btn.disabled){btn.title='Sách đã hết hàng';btn.style.opacity='0.5';btn.style.cursor='not-allowed';}button(btn,(ev)=>{ev?.stopPropagation();addBook(rb);});}button(title,(ev)=>{ev?.stopPropagation();location.href=base+'/?book_id='+rb.id;});const imgParent=c.querySelector('img')?.parentElement;if(imgParent){button(imgParent,(ev)=>{ev?.stopPropagation();location.href=base+'/?book_id='+rb.id;});}c.style.cursor='pointer';c.addEventListener('click',(ev)=>{if(ev.target.closest('button'))return;location.href=base+'/?book_id='+rb.id;});return c;}));}const collectionLink=id('related-collection-link');if(collectionLink){collectionLink.href=base+'/?category_id='+(b.category_id||'');}}}
+ async function detail(){const b=await api('/books/'+Number(params.get('book_id')));for(const e of $$('[data-live=title]'))text(e,b.title);for(const e of $$('[data-live=author]'))text(e,b.author);for(const e of $$('[data-live=price]'))text(e,money(b.price));image($('[data-live=cover]'),b.image);text(id('tab-intro-content'),b.description||'Chưa có mô tả.');text(id('tab-spec-content'),'Thông tin hiện có: '+(b.category_name||'')+' • Tác giả: '+b.author);for(const s of $$('main span'))if(/Còn hàng.*cuốn/i.test(s.textContent))s.innerHTML=Number(b.quantity)>0?'Còn hàng <span class="font-normal text-on-surface-variant">('+b.quantity+' cuốn)</span>':'<span class="text-error">Hết hàng</span>';await setupBookReviews(b);button(id('btn-wishlist'),unsupported);val('qty-input',1);button(id('qty-decrement'),()=>val('qty-input',Math.max(1,Number(value('qty-input'))-1)));button(id('qty-increment'),()=>val('qty-input',Math.min(Number(b.quantity)||1,Number(value('qty-input'))+1)));button(id('btn-add-cart'),()=>addBook(b,value('qty-input')));if(id('btn-add-cart')){id('btn-add-cart').disabled=Boolean(C.user.username)&&Number(b.quantity)<=0;if(id('btn-add-cart').disabled){id('btn-add-cart').title='Sách đã hết hàng';const label=[...id('btn-add-cart').querySelectorAll('span')].find(e=>!e.classList.contains('material-symbols-outlined'));text(label,'Hết hàng')}}window.switchTab=t=>{for(const x of ['intro','spec','reviews']){id('tab-'+x+'-content')?.classList.toggle('hidden',x!==t);const btn=id('tab-'+x+'-btn');if(btn){btn.classList.toggle('text-primary',x===t);btn.classList.toggle('font-bold',x===t);btn.classList.toggle('text-on-surface-variant',x!==t);let line=btn.querySelector('.tab-indicator-line');if(!line){line=document.createElement('span');line.className='tab-indicator-line absolute bottom-0 left-0 w-full h-[2.5px] bg-primary rounded-full';btn.append(line);}line.classList.toggle('hidden',x!==t);}}};if(params.get('review')==='1')window.switchTab('reviews');for(const bt of $$('button'))if(/Đọc thử/.test(bt.textContent))button(bt,unsupported);for(const bt of $$('button'))if(/Mua ngay|So sánh phiên bản/.test(bt.textContent))bt.remove();for(const s of $$('[class*=line-through], span'))if(/150\.000|-17%|Xem thử 24 trang/.test(s.textContent))s.remove();for(const p of $$('p'))if(/Kiệt tác văn chương đương đại/.test(p.textContent))p.remove();const relatedGrid=id('related-books-grid');if(relatedGrid&&relatedGrid.firstElementChild){const cardTpl=cleanClone(relatedGrid.firstElementChild);if(!books.length)await getBooks();let relList=books.filter(x=>Number(x.id)!==Number(b.id));if(b.category_id){const sameCat=relList.filter(x=>Number(x.category_id)===Number(b.category_id));const otherCat=relList.filter(x=>Number(x.category_id)!==Number(b.category_id));relList=[...sameCat,...otherCat];}const chosen=relList.slice(0,4);if(chosen.length>0){relatedGrid.replaceChildren(...chosen.map(rb=>{const c=cleanClone(cardTpl);image(c.querySelector('img'),rb.image);const title=c.querySelector('h4,h3,h2');text(title,rb.title);text(c.querySelector('[class*=font-price]'),money(rb.price));const author=c.querySelector('[class*=font-label][class*=uppercase],p[class*=uppercase]');text(author,rb.author);const badge=c.querySelector('.absolute.top-2.left-2');if(badge)text(badge,rb.category_name||(Number(rb.quantity)>0?'Còn hàng':'Hết hàng'));const rating=c.querySelector('.font-bold');if(rating)text(rating,rb.rating_average?Number(rb.rating_average).toFixed(1):(rb.rating_avg?Number(rb.rating_avg).toFixed(1):'5.0'));const btn=c.querySelector('button');if(btn){btn.setAttribute('aria-label',Number(rb.quantity)<=0&&C.user.username?'Sách '+rb.title+' đã hết hàng':'Thêm '+rb.title+' vào giỏ');btn.disabled=Boolean(C.user.username)&&Number(rb.quantity)<=0;if(btn.disabled){btn.title='Sách đã hết hàng';btn.style.opacity='0.5';btn.style.cursor='not-allowed';}button(btn,(ev)=>{ev?.stopPropagation();addBook(rb);});}button(title,(ev)=>{ev?.stopPropagation();location.href=base+'/?book_id='+rb.id;});const imgParent=c.querySelector('img')?.parentElement;if(imgParent){button(imgParent,(ev)=>{ev?.stopPropagation();location.href=base+'/?book_id='+rb.id;});}c.style.cursor='pointer';c.addEventListener('click',(ev)=>{if(ev.target.closest('button'))return;location.href=base+'/?book_id='+rb.id;});return c;}));}const collectionLink=id('related-collection-link');if(collectionLink){collectionLink.href=base+'/?category_id='+(b.category_id||'');}}}
  async function auth(){if(params.get('reason')==='cart')notice('Vui lòng đăng nhập để thêm sách vào giỏ hàng.');window.togglePasswordVisibility=s=>{const e=id(s||'login-password')||id('login-password');if(e)e.type=e.type==='password'?'text':'password'};button(id('toggle-password-btn'),()=>window.togglePasswordVisibility());const login=id('reader-login-form')||id('loginForm');form(login,async()=>{const d=await api('/auth/login','POST',{username:value('login-identifier')||value('loginUsername'),password:value('login-password')||value('loginPassword')});location.href=base+(d.role==='admin'?'/admin':'/')});const signup=id('reader-signup-form')||id('registerForm');if(page==='register'){val('username','');val('password','');}form(signup,async()=>{const d={};for(const key of ['fullname','phone','address','email','username','password'])d[key]=value(key)||value('input-'+key)||value('reg'+key.charAt(0).toUpperCase()+key.slice(1));await api('/auth/register','POST',d);notice('Đăng ký thành công');location.href=base+'/login'});}
  async function cart(){if(params.get('cart_error')==='stock')notice('Sách đã hết hàng hoặc số lượng trong giỏ đã đạt giới hạn tồn kho.');
  const host=id('cart-item-list'),template=cleanClone(host.querySelector('.cart-row')||host.firstElementChild),checkout=$('main form');let checkingOut=false,changing=false,awaitingQr=false,count=0;
